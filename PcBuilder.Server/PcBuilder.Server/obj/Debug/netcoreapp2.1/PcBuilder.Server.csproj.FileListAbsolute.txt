@@ -1,0 +1,11 @@
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\bin\Debug\netcoreapp2.1\PcBuilder.Server.deps.json
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\bin\Debug\netcoreapp2.1\PcBuilder.Server.runtimeconfig.json
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\bin\Debug\netcoreapp2.1\PcBuilder.Server.runtimeconfig.dev.json
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\bin\Debug\netcoreapp2.1\PcBuilder.Server.dll
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\bin\Debug\netcoreapp2.1\PcBuilder.Server.pdb
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\obj\Debug\netcoreapp2.1\PcBuilder.Server.csprojAssemblyReference.cache
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\obj\Debug\netcoreapp2.1\PcBuilder.Server.csproj.CoreCompileInputs.cache
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\obj\Debug\netcoreapp2.1\PcBuilder.Server.AssemblyInfoInputs.cache
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\obj\Debug\netcoreapp2.1\PcBuilder.Server.AssemblyInfo.cs
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\obj\Debug\netcoreapp2.1\PcBuilder.Server.dll
+C:\Faculty\PcBuilder\PcBuilder.Server\PcBuilder.Server\obj\Debug\netcoreapp2.1\PcBuilder.Server.pdb
