@@ -5,10 +5,11 @@ import { HomeComponent } from './modules/core/components/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'configurator', loadChildren: './modules/configurator/configurator.module#ConfiguratorModule' }
 ];
 
 @NgModule({
-  imports:  [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 
   declarations: []
