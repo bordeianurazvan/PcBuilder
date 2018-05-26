@@ -1,5 +1,6 @@
 .board{
     width: 100%;
+    margin:auto;
 }
 .item input[type=checkbox]:not(old), .item input[type=radio]:not(old) {
     visibility: hidden;

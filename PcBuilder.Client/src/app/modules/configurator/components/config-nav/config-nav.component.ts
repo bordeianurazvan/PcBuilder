@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'config-nav',
+  selector: 'app-config-nav',
   templateUrl: './config-nav.component.html',
   styleUrls: ['./config-nav.component.css']
 })
