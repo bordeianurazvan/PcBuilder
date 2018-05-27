@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ConfiguratorComponent } from './configurator.component';
 import { ConfiguratorRoutes } from './configurator.routing';
 import { ConfigNavComponent } from './components/config-nav/config-nav.component';
+import { CaseComponent } from './components/case/case.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { ConfigNavComponent } from './components/config-nav/config-nav.component
   ],
   declarations: [
     ConfiguratorComponent,
-    ConfigNavComponent
+    ConfigNavComponent,
+    CaseComponent
   ]
 })
 export class ConfiguratorModule { }

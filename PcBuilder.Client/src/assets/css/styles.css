@@ -473,11 +473,11 @@ Buttons
     padding: 20px 50px;
     border-radius: 3px;
     background-color: #fff;
-    color: #4b98a9;
+    color: black;
     font-size: 16px;
 }
 .use-btn:hover, .use-btn:focus {
-    background-color: #73d0da;
+    background-color: #adadad ;
     color: #fff;
     text-decoration: none;
 }
@@ -490,8 +490,8 @@ Buttons
     font-size: 16px;
 }
 .learn-btn:hover, .download-btn:hover, .learn-btn:focus, .download-btn:focus {
-    border-color: #73d0da;
-    color: #73d0da;
+    border-color: #adadad;
+    color: #adadad;
     text-decoration: none;
 }
 .read-more-btn {
@@ -1029,8 +1029,9 @@ Nav Overlay
     transition: all 300ms ease-in-out;
 }
 .overlay ul li a:hover, .overlay ul li a:focus {
-    border-color: #73d0da;
-    color: #73d0da;
+    border-color: black;
+    color: white;
+   
 }
 
 /* Effects */
