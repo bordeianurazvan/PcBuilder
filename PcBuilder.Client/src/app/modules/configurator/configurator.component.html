@@ -1,16 +1,12 @@
-<div class="board">
-    <!-- Navigation Area (Circular Tabs) -->
+<div>
     <app-config-nav></app-config-nav>
-    <!-- End Navigation Area (Circular Tabs) -->
-
     <!-- Content Area -->
     <div class="tab-content">
-        <!-- Routed view  -->
         <router-outlet></router-outlet>
     </div>
+    <!-- End Content Area -->
     <div style="text-align: center">
         <button class="btn btn-danger" (click)="exitConfig()">Quit</button>
         <button class="btn btn-success">Next</button>
     </div>
-    <!-- End Content Area -->
 </div>

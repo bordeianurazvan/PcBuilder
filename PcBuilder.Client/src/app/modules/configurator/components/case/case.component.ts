@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaseComponent implements OnInit {
 
+  onSubmit() {
+    console.log('case submited');
+  }
   constructor() { }
 
   ngOnInit() {
