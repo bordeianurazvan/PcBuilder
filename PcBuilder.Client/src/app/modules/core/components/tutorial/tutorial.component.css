@@ -1,0 +1,110 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h2{
+  text-align: center;
+  padding-top:10px;
+}
+img {
+  display: flex;
+  max-width: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  padding-top:30px;
+  background-color: black
+}
+
+.container {
+  position: relative;
+  max-width: 65%;
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 1;
+  
+}
+
+.hotspots {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+.hotspots .hotspot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+.hotspots .hotspot:nth-child(1) .trigger {
+  top: 80%;
+  left: 25%;
+}
+.hotspots .hotspot:nth-child(2) .trigger {
+  top: 46%;
+  left: 33%;
+}
+.hotspots .hotspot:nth-child(3) .trigger {
+  top: 75%;
+  left: 75%;
+}
+.hotspots .hotspot:nth-child(4) .trigger {
+  top: 58%;
+  left: 75%;
+}
+.hotspots .hotspot:nth-child(5) .trigger {
+  top: 58%;
+  left: 45%;
+}
+.hotspots .hotspot:nth-child(6) .trigger {
+  top: 30%;
+  left: 40%;
+}
+.hotspots .hotspot:nth-child(7) .trigger {
+  top: 25%;
+  left: 24%;
+}
+.hotspots .hotspot .trigger {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background: #ff2255;
+  color: #EEE6F0;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  cursor: pointer;
+  pointer-events: all;
+  box-shadow: 0 0 0 0 #ff2255;
+  transition: box-shadow 0.4s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.hotspots .hotspot .trigger:hover {
+  box-shadow: 0 0 0 8px rgba(255, 34, 85, 0.5);
+}
