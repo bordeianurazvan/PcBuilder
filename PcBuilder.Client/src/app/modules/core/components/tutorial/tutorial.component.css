@@ -32,7 +32,7 @@ main {
   max-width: 65%;
   border-radius: 6px;
   overflow: hidden;
-  z-index: 1;
+  /* z-index: 1; */
   
 }
 
@@ -84,6 +84,10 @@ main {
   top: 25%;
   left: 24%;
 }
+.hotspots .hotspot:nth-child(8) .trigger {
+  top: 37%;
+  left: 48%;
+}
 .hotspots .hotspot .trigger {
   position: absolute;
   display: flex;
@@ -108,3 +112,39 @@ main {
 .hotspots .hotspot .trigger:hover {
   box-shadow: 0 0 0 8px rgba(255, 34, 85, 0.5);
 }
+
+.content{
+  display: block;
+}
+.modal-dialog{
+  max-width: 650px;
+}
+
+h2{
+  color:white;
+}
+.background{
+  background-color: black;
+  height: 100vh;
+}
+.nav-toggle{
+  z-index: 9;
+}
+#title{
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .hotspots[_ngcontent-c1] .hotspot[_ngcontent-c1] .trigger[_ngcontent-c1]{
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hotspots[_ngcontent-c1] .hotspot[_ngcontent-c1] .trigger[_ngcontent-c1]{
+    width: 17px;
+    height: 17px;
+  }
+}
+

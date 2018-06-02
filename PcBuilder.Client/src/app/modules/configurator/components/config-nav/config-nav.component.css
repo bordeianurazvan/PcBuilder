@@ -25,6 +25,10 @@ li > a {
   pointer-events: fill;
 }
 
+a:hover{
+  text-decoration: none;
+}
+
 .title {
   color: black;
   font-size: 15px;
@@ -45,6 +49,7 @@ li > a {
   /* background: linear-gradient(#e66465, #9198e5); */
   /* background: linear-gradient(120deg, orange, orange 45%, cyan); */
   background-color:whitesmoke;
+  text-align: center;
 }
 .progress {
   background-color: white;
