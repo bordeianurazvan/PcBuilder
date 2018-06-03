@@ -4,7 +4,7 @@
   <div class="col-sm-12">
     <ul class="cards">
       <li class="cards__item">
-        <div class="card">
+        <div class="card" [ngClass]="{'selected': isSelected}">
           <div class="card_image">
             <img src="../../../../../assets/images/computerParts/computer_case.png">
             <div class="info">
@@ -26,17 +26,16 @@
             </div>
           </div>
           <div class="card__content">
-            <div class="card__title">Flex</div>
-            <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink
-              and flex-basis) are optional. Default is 0 1 auto. </p>
+            <div class="card__title"> Deepcool Tesseract BF black</div>
+            <p class="card__text">100$ </p>
             <div class="buttons">
-              <button class="btn btn--block card__btn">Select</button>
+              <button class="btn btn--block card__btn" (click)="isSelected = !isSelected">Select</button>
             </div>
           </div>
         </div>
       </li>
       <li class="cards__item">
-        <div class="card">
+        <div class="card" [ngClass]="{'selected': isSelected}">
           <div class="card_image">
             <img src="../../../../../assets/images/computerParts/computer_case.png">
             <div class="info">
@@ -58,9 +57,8 @@
               </div>
           </div>
           <div class="card__content">
-            <div class="card__title">Flex</div>
-            <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink
-              and flex-basis) are optional. Default is 0 1 auto. </p>
+            <div class="card__title"> Segotep SG-K8 Black</div>
+            <p class="card__text">150$ </p>
             <div class="buttons">
               <button class="btn btn--block card__btn">Select</button>
             </div>
@@ -90,9 +88,8 @@
             </div>
           </div>
           <div class="card__content">
-            <div class="card__title">Flex</div>
-            <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink
-              and flex-basis) are optional. Default is 0 1 auto. </p>
+            <div class="card__title">Zalman Z3 Plus</div>
+            <p class="card__text">175$</p>
             <div class="buttons">
               <button class="btn btn--block card__btn">Select</button>
             </div>
@@ -122,9 +119,8 @@
             </div>
           </div>
           <div class="card__content">
-            <div class="card__title">Flex</div>
-            <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink
-              and flex-basis) are optional. Default is 0 1 auto. </p>
+            <div class="card__title">Floston RED FIRE</div>
+            <p class="card__text">190$</p>
             <div class="buttons">
               <button class="btn btn--block card__btn">Select</button>
             </div>
@@ -154,9 +150,8 @@
             </div>
           </div>
           <div class="card__content">
-            <div class="card__title">Flex</div>
-            <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink
-              and flex-basis) are optional. Default is 0 1 auto. </p>
+            <div class="card__title">Segotep Legend C2</div>
+            <p class="card__text">192$ </p>
             <div class="buttons">
               <button class="btn btn--block card__btn">Select</button>
             </div>
@@ -186,9 +181,8 @@
             </div>
           </div>
           <div class="card__content">
-            <div class="card__title">Flex</div>
-            <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink
-              and flex-basis) are optional. Default is 0 1 auto. </p>
+            <div class="card__title">Segotep Halo 5 Black</div>
+            <p class="card__text">199$</p>
             <div class="buttons">
               <button class="btn btn--block card__btn">Select</button>
             </div>
@@ -197,5 +191,17 @@
       </li>
     </ul>
   </div>
-
+  <div class="footer">
+      <div class="col-sm-12 footer_content">
+        <div class="col-sm-3">
+            <p><span class="total_price">Total: $1999.00</span></p>
+        </div>
+        <div class="col-sm-6">
+            <button class="btn btn-warning"> < Prev</button>
+            <button class="btn btn-danger">Quit</button>
+            <button class="btn btn-success">Next ></button>
+        </div>
+      </div>
+    </div>
 </div>
+
