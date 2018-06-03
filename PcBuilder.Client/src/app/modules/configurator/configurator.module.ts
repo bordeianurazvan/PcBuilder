@@ -11,8 +11,9 @@ import { RamComponent } from './components/ram/ram.component';
 import { VideoCardComponent } from './components/videoCard/videoCard.component';
 import { StorageComponent } from './components/storage/storage.component';
 import { PowerSupplyComponent } from './components/powerSupply/powerSupply.component';
-import { CardComponent } from '../configurator/shared/components/card/card.component';
 import { ConfigComputerService } from './shared/services/config-computer.service';
+import { CaseCardComponent } from './shared/components/case-card/case-card.component';
+import { CpuCardComponent } from './shared/components/cpu-card/cpu-card.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { ConfigComputerService } from './shared/services/config-computer.service
     VideoCardComponent,
     StorageComponent,
     PowerSupplyComponent,
-    CardComponent
+    CaseCardComponent,
+    CpuCardComponent
 
   ],
   providers: [ConfigComputerService]

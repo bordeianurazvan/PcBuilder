@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  selector: 'app-case-card',
+  templateUrl: './case-card.component.html',
+  styleUrls: ['./case-card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CaseCardComponent implements OnInit {
 
   @Input() case;
   @Output() caseEvent = new EventEmitter<number>();

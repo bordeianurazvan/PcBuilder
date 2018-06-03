@@ -5,7 +5,7 @@
     <ul class="cards" >
       
       <li class="cards__item" *ngFor="let case of cases">
-          <app-card [case]="case" (caseEvent)="caseSelected($event)"></app-card>
+          <app-case-card [case]="case" (caseEvent)="caseSelected($event)"></app-case-card>
       </li>
     </ul>
   </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="col-sm-6">
             <!-- <button class="btn btn-warning"> < Prev</button> -->
-            <button class="btn btn-danger">Quit</button>
+            <button class="btn btn-danger" routerLink="">Quit</button>
             <button class="btn btn-success" [disabled]="isDisabled" (click)="goToCPU()">Next ></button>
         </div>
       </div>

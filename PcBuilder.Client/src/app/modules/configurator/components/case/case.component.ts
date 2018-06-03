@@ -11,22 +11,21 @@ export class CaseComponent implements OnInit {
   cases: any[] = [];
   isDisabled = true;
   selectedCaseId: number;
+  indexOfcaseAlreadySelected: any;
 
   caseSelected($event) {
     if (this.selectedCaseId === $event) {
-      this.selectedCaseId = undefined; // nu am nici o carcasa selectata
-      this.isDisabled = true; // butonul este dezactivat cand nu e selectata nici o carcasa
+      this.selectedCaseId = undefined;
+      this.isDisabled = true;
     } else {
-      for (let i = 0; i < this.cases.length; i++) { // parcurg carcasele
+      for (let i = 0; i < this.cases.length; i++) {
         if ($event !== this.cases[i].id) {
-          this.cases[i].isSelected = false; // si le deselectez
+          this.cases[i].isSelected = false;
         }
       }
-      this.selectedCaseId = $event; // selectez carcasa
-      this.isDisabled = false; // activez butonul de next
+      this.selectedCaseId = $event;
+      this.isDisabled = false;
     }
-
-    console.log(this.selectedCaseId);
   }
 
   goToCPU() {
@@ -75,5 +74,14 @@ export class CaseComponent implements OnInit {
         isSelected: false
       }
     ];
+    if (this.configService.computer.caseId !== undefined) {
+      this.indexOfcaseAlreadySelected = this.cases.find(
+        c => c.id === this.configService.computer.caseId
+      ).isSelected = true;
+      if (this.indexOfcaseAlreadySelected !== undefined) {
+        this.isDisabled = false;
+      }
+      this.selectedCaseId = this.configService.computer.caseId;
+    }
   }
 }
