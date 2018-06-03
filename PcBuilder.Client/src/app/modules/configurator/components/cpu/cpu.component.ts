@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigComputerService } from '../../shared/services/config-computer.service';
 
 @Component({
   selector: 'app-cpu',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CpuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private configService: ConfigComputerService) { }
 
   ngOnInit() {
+    console.log(this.configService.computer);
   }
 
 }

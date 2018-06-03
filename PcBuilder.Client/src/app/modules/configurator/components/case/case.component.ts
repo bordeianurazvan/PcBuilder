@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfigComputerService } from '../../shared/services/config-computer.service';
 
 @Component({
   selector: 'app-case',
@@ -29,10 +30,11 @@ export class CaseComponent implements OnInit {
   }
 
   goToCPU() {
+    this.configService.computer.caseId = this.selectedCaseId;
     this.router.navigate(['/configurator/cpu']);
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private configService: ConfigComputerService) {}
 
   ngOnInit() {
     this.cases = [

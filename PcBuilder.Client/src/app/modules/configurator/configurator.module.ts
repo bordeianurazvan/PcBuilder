@@ -12,6 +12,7 @@ import { VideoCardComponent } from './components/videoCard/videoCard.component';
 import { StorageComponent } from './components/storage/storage.component';
 import { PowerSupplyComponent } from './components/powerSupply/powerSupply.component';
 import { CardComponent } from '../configurator/shared/components/card/card.component';
+import { ConfigComputerService } from './shared/services/config-computer.service';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { CardComponent } from '../configurator/shared/components/card/card.compo
     PowerSupplyComponent,
     CardComponent
 
-  ]
+  ],
+  providers: [ConfigComputerService]
 })
 export class ConfiguratorModule { }
