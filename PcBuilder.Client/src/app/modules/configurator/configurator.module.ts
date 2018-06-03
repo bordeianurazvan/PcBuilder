@@ -11,6 +11,7 @@ import { RamComponent } from './components/ram/ram.component';
 import { VideoCardComponent } from './components/videoCard/videoCard.component';
 import { StorageComponent } from './components/storage/storage.component';
 import { PowerSupplyComponent } from './components/powerSupply/powerSupply.component';
+import { CardComponent } from '../configurator/shared/components/card/card.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { PowerSupplyComponent } from './components/powerSupply/powerSupply.compo
     RamComponent,
     VideoCardComponent,
     StorageComponent,
-    PowerSupplyComponent
+    PowerSupplyComponent,
+    CardComponent
 
   ]
 })
