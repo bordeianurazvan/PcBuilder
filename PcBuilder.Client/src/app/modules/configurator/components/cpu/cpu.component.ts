@@ -12,19 +12,25 @@ export class CpuComponent implements OnInit {
   isDisabled = true;
   selectedCpuId: number;
   indexOfCpuAlreadySelected: any;
+  currentTotalPrice: number;
 
   cpuSelected($event) {
     if (this.selectedCpuId === $event) {
       this.selectedCpuId = undefined;
       this.isDisabled = true;
+      this.currentTotalPrice = this.currentTotalPrice - this.getCpuById($event).price;
     } else {
       for (let i = 0; i < this.cpus.length; i++) {
         if ($event !== this.cpus[i].id) {
+          if (this.cpus[i].isSelected) {
+            this.currentTotalPrice = this.currentTotalPrice - this.getCpuById(this.cpus[i].id).price;
+          }
           this.cpus[i].isSelected = false;
         }
       }
       this.selectedCpuId = $event;
       this.isDisabled = false;
+      this.currentTotalPrice = this.currentTotalPrice + this.getCpuById(this.selectedCpuId).price;
     }
   }
 
@@ -37,9 +43,17 @@ export class CpuComponent implements OnInit {
     this.router.navigate(['configurator/cooler']);
   }
 
+  getCpuById(id: number) {
+    if (id !== undefined) {
+      return this.cpus.find(c => c.id === id);
+    }
+  }
+
+
   constructor(private router: Router, private configService: ConfigComputerService) {}
 
   ngOnInit() {
+    this.currentTotalPrice = this.configService.price;
     this.cpus = [
       {
         id: 1,
