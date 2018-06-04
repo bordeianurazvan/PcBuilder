@@ -12,30 +12,45 @@ export class CaseComponent implements OnInit {
   isDisabled = true;
   selectedCaseId: number;
   indexOfcaseAlreadySelected: any;
+  currentTotalPrice: number;
 
   caseSelected($event) {
     if (this.selectedCaseId === $event) {
       this.selectedCaseId = undefined;
       this.isDisabled = true;
+      this.currentTotalPrice = this.currentTotalPrice - this.getCaseById($event).price;
     } else {
       for (let i = 0; i < this.cases.length; i++) {
         if ($event !== this.cases[i].id) {
+          if (this.cases[i].isSelected) {
+            this.currentTotalPrice =
+              this.currentTotalPrice - this.getCaseById(this.cases[i].id).price;
+          }
           this.cases[i].isSelected = false;
         }
       }
       this.selectedCaseId = $event;
       this.isDisabled = false;
+      this.currentTotalPrice = this.currentTotalPrice + this.getCaseById(this.selectedCaseId).price;
+    }
+  }
+
+  getCaseById(id: number) {
+    if (id !== undefined) {
+      return this.cases.find(c => c.id === id);
     }
   }
 
   goToCPU() {
     this.configService.computer.caseId = this.selectedCaseId;
+    this.configService.price = this.currentTotalPrice;
     this.router.navigate(['/configurator/cpu']);
   }
 
   constructor(private router: Router, private configService: ConfigComputerService) {}
 
   ngOnInit() {
+    this.currentTotalPrice = this.configService.price;
     this.cases = [
       {
         id: 1,
@@ -52,7 +67,7 @@ export class CaseComponent implements OnInit {
       {
         id: 2,
         title: 'DEEPCOOL TESSERACT BF BLACK',
-        price: 100,
+        price: 85,
         type: 'MidTower',
         motherboards: ['ATX', 'MTX'],
         fans: '2/6',
@@ -64,7 +79,7 @@ export class CaseComponent implements OnInit {
       {
         id: 3,
         title: 'DEEPCOOL TESSERACT BF BLACK',
-        price: 100,
+        price: 99,
         type: 'MidTower',
         motherboards: ['ATX', 'MTX'],
         fans: '2/6',
