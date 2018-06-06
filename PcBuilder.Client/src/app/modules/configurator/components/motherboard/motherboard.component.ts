@@ -35,7 +35,7 @@ export class MotherboardComponent implements OnInit {
   }
 
   goToCooler() {
-    this.configService.progress = this.configService.progress - 13;
+    this.configService.progress = this.configService.progress - 14;
     this.router.navigate(['/configurator/cooler']);
   }
 

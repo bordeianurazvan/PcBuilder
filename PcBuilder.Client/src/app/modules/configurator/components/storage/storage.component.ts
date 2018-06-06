@@ -42,7 +42,7 @@ export class StorageComponent implements OnInit {
   goToPowersupply() {
     this.configService.computer.storageId = this.selectedStorageId;
     this.configService.price = this.currentTotalPrice;
-    this.configService.progress = this.configService.progress + 13;
+    this.configService.progress = this.configService.progress + 15;
     this.router.navigate(['configurator/powersupply']);
   }
 

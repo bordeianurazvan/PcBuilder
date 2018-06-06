@@ -19,6 +19,7 @@ import { MotherboardCardComponent } from './shared/components/motherboard-card/m
 import { RamCardComponent } from './shared/components/ram-card/ram-card.component';
 import { VideocardCardComponent } from './shared/components/videocard-card/videocard-card.component';
 import { StorageCardComponent } from './shared/components/storage-card/storage-card.component';
+import { PowersupplyCardComponent } from './shared/components/powersupply-card/powersupply-card.component';
 
 @NgModule({
   imports: [
@@ -42,8 +43,8 @@ import { StorageCardComponent } from './shared/components/storage-card/storage-c
     MotherboardCardComponent,
     RamCardComponent,
     VideocardCardComponent,
-    StorageCardComponent
-
+    StorageCardComponent,
+    PowersupplyCardComponent
   ],
   providers: [ConfigComputerService]
 })

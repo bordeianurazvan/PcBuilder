@@ -35,7 +35,7 @@ export class RamComponent implements OnInit {
   }
 
   goToMotherboard() {
-    this.configService.progress = this.configService.progress - 13;
+    this.configService.progress = this.configService.progress - 15;
     this.router.navigate(['/configurator/motherboard']);
   }
 

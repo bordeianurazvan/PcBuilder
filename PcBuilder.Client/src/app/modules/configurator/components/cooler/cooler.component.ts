@@ -36,14 +36,14 @@ export class CoolerComponent implements OnInit {
 
 
   goToCpu() {
-    this.configService.progress = this.configService.progress - 13;
+    this.configService.progress = this.configService.progress - 14;
     this.router.navigate(['/configurator/cpu']);
   }
 
   goToMotherboard() {
     this.configService.computer.coolerId = this.selectedCoolerId;
     this.configService.price = this.currentTotalPrice;
-    this.configService.progress = this.configService.progress + 13;
+    this.configService.progress = this.configService.progress + 14;
     this.router.navigate(['configurator/motherboard']);
   }
 
