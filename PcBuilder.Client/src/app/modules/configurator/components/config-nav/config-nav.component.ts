@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigComputerService } from '../../shared/services/config-computer.service';
 
 @Component({
   selector: 'app-config-nav',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfigNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(public configService: ConfigComputerService) { }
 
   ngOnInit() {
   }

@@ -35,11 +35,14 @@ export class CpuComponent implements OnInit {
   }
 
   goToCase() {
+    this.configService.progress = this.configService.progress - 13;
     this.router.navigate(['/configurator/case']);
   }
 
   goToCpuCooler() {
     this.configService.computer.cpuId = this.selectedCpuId;
+    this.configService.price = this.currentTotalPrice;
+    this.configService.progress = this.configService.progress + 13;
     this.router.navigate(['configurator/cooler']);
   }
 

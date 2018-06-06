@@ -1,3 +1,25 @@
-<p>
-  cooler works!
-</p>
+<div class="container-fluid">
+  <h3>Please select a product:</h3>
+
+  <div class="col-sm-12">
+    <ul class="cards" >
+      
+      <li class="cards__item" *ngFor="let cooler of coolers">
+          <app-cooler-card [cooler]="cooler" (coolerEvent)="coolerSelected($event)"></app-cooler-card>
+      </li>
+    </ul>
+  </div>
+  <div class="footer">
+      <div class="col-sm-12 footer_content">
+        <div class="col-sm-3">
+            <p><span class="total_price">Total: ${{currentTotalPrice}}</span></p>
+        </div>
+        <div class="col-sm-6">
+            <button class="btn btn-warning" (click)="goToCpu()"> < Prev</button>
+            <button class="btn btn-danger" routerLink="">Quit</button>
+            <button class="btn btn-success" [disabled]="isDisabled" (click)="goToMotherboard()">Next ></button>
+        </div>
+      </div>
+    </div>
+</div>
+

@@ -44,6 +44,7 @@ export class CaseComponent implements OnInit {
   goToCPU() {
     this.configService.computer.caseId = this.selectedCaseId;
     this.configService.price = this.currentTotalPrice;
+    this.configService.progress = this.configService.progress + 13;
     this.router.navigate(['/configurator/cpu']);
   }
 

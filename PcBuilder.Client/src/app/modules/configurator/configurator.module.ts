@@ -14,6 +14,7 @@ import { PowerSupplyComponent } from './components/powerSupply/powerSupply.compo
 import { ConfigComputerService } from './shared/services/config-computer.service';
 import { CaseCardComponent } from './shared/components/case-card/case-card.component';
 import { CpuCardComponent } from './shared/components/cpu-card/cpu-card.component';
+import { CoolerCardComponent } from './shared/components/cooler-card/cooler-card.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { CpuCardComponent } from './shared/components/cpu-card/cpu-card.componen
     StorageComponent,
     PowerSupplyComponent,
     CaseCardComponent,
-    CpuCardComponent
+    CpuCardComponent,
+    CoolerCardComponent
 
   ],
   providers: [ConfigComputerService]
