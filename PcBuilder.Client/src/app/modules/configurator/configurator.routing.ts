@@ -19,7 +19,7 @@ const routes: Routes = [
       { path: 'cooler', component: CoolerComponent },
       { path: 'motherboard', component: MotherboardComponent },
       { path: 'ram', component: RamComponent },
-      { path: 'videoCard', component: VideoCardComponent },
+      { path: 'videocard', component: VideoCardComponent },
       { path: 'storage', component: StorageComponent },
       { path: 'powerSupply', component: PowerSupplyComponent }
     ]

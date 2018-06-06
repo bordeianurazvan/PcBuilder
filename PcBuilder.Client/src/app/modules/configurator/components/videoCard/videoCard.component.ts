@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-videoCard',
+  selector: 'app-videocard',
   templateUrl: './videoCard.component.html',
   styleUrls: ['./videoCard.component.css']
 })
