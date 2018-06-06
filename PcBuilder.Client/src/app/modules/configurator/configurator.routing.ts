@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'ram', component: RamComponent },
       { path: 'videocard', component: VideoCardComponent },
       { path: 'storage', component: StorageComponent },
-      { path: 'powerSupply', component: PowerSupplyComponent }
+      { path: 'powersupply', component: PowerSupplyComponent }
     ]
   }
 ];
