@@ -17,6 +17,7 @@ import { CpuCardComponent } from './shared/components/cpu-card/cpu-card.componen
 import { CoolerCardComponent } from './shared/components/cooler-card/cooler-card.component';
 import { MotherboardCardComponent } from './shared/components/motherboard-card/motherboard-card.component';
 import { RamCardComponent } from './shared/components/ram-card/ram-card.component';
+import { VideocardCardComponent } from './shared/components/videocard-card/videocard-card.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { RamCardComponent } from './shared/components/ram-card/ram-card.componen
     CpuCardComponent,
     CoolerCardComponent,
     MotherboardCardComponent,
-    RamCardComponent
+    RamCardComponent,
+    VideocardCardComponent
 
   ],
   providers: [ConfigComputerService]

@@ -42,7 +42,7 @@ export class MotherboardComponent implements OnInit {
   goToRam() {
     this.configService.computer.motherboardId = this.selectedMoatherboardId;
     this.configService.price = this.currentTotalPrice;
-    this.configService.progress = this.configService.progress + 13;
+    this.configService.progress = this.configService.progress + 15;
     this.router.navigate(['configurator/ram']);
   }
 
