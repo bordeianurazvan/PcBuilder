@@ -1,22 +1,52 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<header>
+  <section class="hero">
+      <div class="texture-overlay"></div>
+      <div class="container">
+          <div class="row nav-wrapper">
+              <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+                  <!-- <a href="#">
+                      <img src="../assets/images/logoPcBuilder150x150.png" alt="Logo">
+                  </a> -->
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
+                  <p>MENU</p>
+                  <a id="trigger-overlay" class="nav_slide_button nav-toggle" [ngClass]="{'active': isActive}" (click)="isActive = !isActive; isOpen = !isOpen">
+                      <span></span>
+                  </a>
+              </div>
+          </div>
+          <div class="row hero-content">
+              <div class="col-md-12">
+                  <h1 class="animated fadeInDown"><b>PC Builder.</b><br>Building a computer simpler than ever.</h1>
+                  <a routerLink="configurator/case" class="use-btn animated fadeInUp">Configure</a>
+                  <a routerLink="tutorial" class="learn-btn animated fadeInUp">Learn more
+                      <i class="fa fa-arrow-down"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </section>
+</header>
 
-<i class="fa fa-american-sign-language-interpreting fa-5x" aria-hidden="true"> </i>
-<i class="fa fa-frown-o fa-5x" aria-hidden="true"></i>
+<section class="video" id="about">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12 text-center">
+              <h1>
+                  <a href="https://www.youtube.com/watch?v=YOdWCEfzySY" class="youtube-media">
+                      <i class="fa fa-play-circle-o"></i> Watch the Video</a>
+              </h1>
+          </div>
+      </div>
+  </div>
+</section>
+
+<div class="overlay overlay-boxify" [ngClass]="{'open': isOpen}">
+  <nav>
+      <ul>
+          <li><a routerLink="configurator/case"><i class="fa fa-desktop"></i>Configure</a></li>
+          <li><a routerLink="tutorial"><i class="fa fa-flash"></i>Tutorials</a></li>
+          <li><a routerLink="#screenshots"><i class="fa fa-heart"></i>Blog</a></li>
+      </ul>
+  </nav>
+</div>

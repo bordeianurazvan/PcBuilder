@@ -1,0 +1,29 @@
+<div class="card" [ngClass]="{'selected': storage.isSelected}">
+  <div class="card_image">
+    <img src="../../../../../../assets/images/configurator/storage/hdd.jpg">
+    <div class="info">
+      <h2>Specifications:</h2>
+      <ul>
+        <li>
+          <strong>Socket:</strong>{{storage.socket}}</li>
+        <li>
+          <strong>Series: </strong>{{storage.series}}</li>
+        <li>
+          <strong>Zones: </strong>9 - 11</li>
+        <li>
+          <strong>Height: </strong>2 - 3 feet</li>
+        <li>
+          <strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall</li>
+        <li>
+          <strong>Features: </strong>Tolerates heat</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card__content">
+    <div class="card__title"> {{storage.title}}</div>
+    <p class="card__text">{{storage.price}}$ </p>
+    <div class="buttons">
+      <button class="btn btn--block card__btn" (click)="onSelect()">Select</button>
+    </div>
+  </div>
+</div>

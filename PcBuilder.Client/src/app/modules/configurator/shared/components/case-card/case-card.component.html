@@ -1,0 +1,29 @@
+<div class="card" [ngClass]="{'selected': case.isSelected}">
+  <div class="card_image">
+    <img src="../../../../../assets/images/computerParts/computer_case.png">
+    <div class="info">
+      <h2>Specifications:</h2>
+      <ul>
+        <li>
+          <strong>Type:</strong>{{case.type}}</li>
+        <li>
+          <strong>Motherboards: </strong>{{case.motherboards}}</li>
+        <li>
+          <strong>Zones: </strong>9 - 11</li>
+        <li>
+          <strong>Height: </strong>2 - 3 feet</li>
+        <li>
+          <strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall</li>
+        <li>
+          <strong>Features: </strong>Tolerates heat</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card__content">
+    <div class="card__title"> {{case.title}}</div>
+    <p class="card__text">{{case.price}}$ </p>
+    <div class="buttons">
+      <button class="btn btn--block card__btn" (click)="onSelect()">Select</button>
+    </div>
+  </div>
+</div>

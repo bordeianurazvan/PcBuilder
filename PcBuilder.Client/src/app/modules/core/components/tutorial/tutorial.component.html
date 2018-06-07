@@ -1,0 +1,375 @@
+<div class="background">
+  <h2>Learn about computer components:</h2>
+  <header>
+  <section>
+    <div class="texture-overlay"></div>
+    <div class="container">
+      <div class="row nav-wrapper">
+        <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
+          <p id="title">MENU</p>
+          <a id="trigger-overlay" class="nav_slide_button nav-toggle" [ngClass]="{'active': isActive}" (click)="isActive = !isActive; isOpen = !isOpen">
+            <span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
+
+  <main>
+    <div class="container">
+      <div class="media">
+        <figure>
+          <img src="../../../../../assets/images/computerParts/system1.jpg" />
+        </figure>
+      </div>
+      <div class="hotspots">
+        <div class="hotspot">
+          <div class="trigger">
+            <i class="fa fa-info-circle" (click)="test()" data-toggle="modal" data-target="#powerSupplyModal"></i>
+          </div>
+        </div>
+        <div class="hotspot">
+          <div class="trigger">
+            <i class="fa fa-info-circle" (click)="test()" data-toggle="modal" data-target="#videocardModal"></i>
+          </div>
+        </div>
+        <div class="hotspot">
+          <div class="trigger">
+            <i class="fa fa-info-circle" (click)="test()" data-toggle="modal" data-target="#hddModal"></i>
+          </div>
+        </div>
+        <div class="hotspot">
+          <div class="trigger">
+            <i class="fa fa-info-circle" (click)="test()" data-toggle="modal" data-target="#ssdModal"></i>
+          </div>
+        </div>
+        <div class="hotspot">
+          <div class="trigger">
+            <i class="fa fa-info-circle" (click)="test()" data-toggle="modal" data-target="#motherboardModal"></i>
+          </div>
+        </div>
+        <div class="hotspot">
+          <div class="trigger">
+            <i class="fa fa-info-circle" (click)="test()" data-toggle="modal" data-target="#cpuModal"></i>
+          </div>
+        </div>
+        <div class="hotspot">
+          <div class="trigger">
+            <i class="fa fa-info-circle" (click)="test()" data-toggle="modal" data-target="#coolerModal"></i>
+          </div>
+        </div>
+        <div class="hotspot">
+          <div class="trigger">
+            <i class="fa fa-info-circle" (click)="test()" data-toggle="modal" data-target="#ramModal"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal fade" id="powerSupplyModal" tabindex="-1" role="dialog" aria-labelledby="powerSupplyModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="powerSupplyModal">Power Supply</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12 content">
+            <img src="../../../../../assets/images/tutorialComponent/powerSupplyModal.jpg">
+            <p>The power supply unit is the piece of
+              <strong>hardware</strong> that's used to convert the power provided from the outlet into usable power for the many
+              parts inside the computer
+              <strong>case</strong>.
+            </p>
+            <p>Unlike some hardware components used with a computer that isn't necessarily needed, as a printer, the power supply
+              is a crucial piece because, without it, the rest of the internal hardware can't function.
+            </p>
+            <p>The power supply unit is often abbreviated as PSU and is also known as a power pack or power converter.</p>
+            <p>A PSU is not usually user serviceable.
+              <strong>For your safety</strong>, it's usually wise to never open a power supply unit.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="hddModal" tabindex="-1" role="dialog" aria-labelledby="hddModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="hddModal">HDD</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12 content">
+            <img src="../../../../../assets/images/tutorialComponent/hddModal.png">
+            <p>The
+              <strong>hard drive</strong> is where your software, documents, and other files are stored. The hard drive is
+              <strong>long-term storage</strong>, which means the data is still saved even if you turn the computer off or unplug
+              it.
+            </p>
+            <p>When you run a program or open a file, the computer copies some of the data from the
+              <strong>hard drive</strong> onto the
+              <strong>RAM</strong>. When you
+              <strong>save</strong> a file, the data is copied back to the
+              <strong>hard drive</strong>. The faster the hard drive, the faster your computer can
+              <strong>start up</strong> and
+              <strong>load programs</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="ssdModal" tabindex="-1" role="dialog" aria-labelledby="ssdModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ssdModal">SSD</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12 content">
+            <img src="../../../../../assets/images/tutorialComponent/ssdModal.png">
+            <p>Stands for "Solid State Drive." An SSD is a type of mass
+              <strong>storage device</strong> similar to a
+              <strong>hard disk drive</strong> (HDD). It supports reading and writing data and maintains stored data in a permanent
+              state even without power. Internal SSDs connect to a computer like a hard drive, using standard
+              <strong>IDE</strong> or
+              <strong>SATA</strong> connections.
+            </p>
+            <p>While SSDs serve the same function as hard drives, their internal components are much different. Unlike hard
+              drives, SSDs do not have any moving parts (which is why they are called
+              <strong>solid state</strong> drives). Instead of storing data on magnetic platters, SSDs store data using
+              <strong>flash memory</strong>. Since SSDs have no moving parts, they don't have to "spin up" while in a sleep state
+              and they don't need to move a drive head to different parts of the drive to access data. Therefore, SSDs can
+              access data faster than HDDs.
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="motherboardModal" tabindex="-1" role="dialog" aria-labelledby="motherboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="motherboardModal">Motherboard</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12 content">
+            <img src="../../../../../assets/images/tutorialComponent/motherboardModal.jpg">
+            <p>The
+              <strong>motherboard</strong> is the computer's
+              <strong>main circuit board</strong>. It's a thin plate that holds the CPU, memory, connectors for the hard drive and
+              optical drives, expansion cards to control the video and audio, and connections to your computer's ports (such
+              as USB ports). The motherboard connects directly or indirectly to every part of the computer.
+            </p>
+            <p>The most common motherboard design in desktop computers today is
+              <strong>ATX</strong>, an Intel improvement on the AT design by IBM. Other form factors include extended ATX mini-ATX,
+              microATX, BTX, microBTX mini ITX, micro ITX and nano ITX.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="videocardModal" tabindex="-1" role="dialog" aria-labelledby="videocardModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="videocardModal">Video card</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12 content">
+            <img src="../../../../../assets/images/tutorialComponent/videocardModal.png">
+            <p>The
+              <strong>video card</strong> is responsible for
+              <strong>what you see</strong> on the monitor. Most computers have a
+              <strong>GPU (graphics processing unit)</strong> built into the motherboard instead of having a separate video card.
+              If you like playing graphics-intensive games, you can add a faster video card to one of the
+              <strong>expansion slots</strong> to get better performance.
+            </p>
+            <p>A staggering number of companies manufacture video cards, but almost every one includes a graphics processing
+              unit (GPU) from either
+              <strong>NVIDIA Corporation</strong> or
+              <strong>AMD</strong>.
+            </p>
+            <p>The video card installs in an expansion slot on the motherboard. While most video cards are of the
+              <strong>PCIe</strong> format, video cards come in other formats as well, including PCI and
+              <strong>AGP</strong>. These additional formats are older standards and don't communicate with the CPU and other components
+              as quickly as PCIe.
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="cpuModal" tabindex="-1" role="dialog" aria-labelledby="cpuModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cpuModal">CPU</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12 content">
+            <img src="../../../../../assets/images/tutorialComponent/cpuModal.jpg">
+            <p>The central processing unit (CPU), also called a
+              <strong>processor</strong>, is located inside the
+              <strong>computer case</strong> on the motherboard. It is sometimes called the brain of the computer, and its job is
+              to carry out commands. Whenever you press a key, click the mouse, or start an application, you're sending instructions
+              to the CPU.
+            </p>
+            <p>The CPU is usually a
+              <strong>two-inch ceramic square</strong> with a
+              <strong>silicon chip</strong> located inside. The chip is usually about the size of a thumbnail. The CPU fits into
+              the motherboard's
+              <strong>CPU socket</strong>, which is covered by the
+              <strong>heat sink</strong>, an object that absorbs heat from the CPU.
+            </p>
+            <p>A processor's
+              <strong>speed</strong> is measured in
+              <strong>megahertz (MHz)</strong>, or millions of instructions per second; and
+              <strong>gigahertz (GHz)</strong>, or billions of instructions per second. A faster processor can execute instructions
+              more quickly. However, the actual speed of the computer depends on the speed of many different components—not
+              just the processor.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="coolerModal" tabindex="-1" role="dialog" aria-labelledby="coolerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="coolerModal">CPU cooler</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12 content">
+            <img src="../../../../../assets/images/tutorialComponent/coolerModal.png">
+            <p>A CPU cooler is device designed to draw heat away from the
+              <strong>system CPU</strong> and other components in the enclosure. Using a CPU cooler to lower CPU temperatures improves
+              efficiency and stability of the system.
+            </p>
+            <p style="font-size:15px; margin:0;">
+              <strong style="font-size:15px; margin:0;">Air CPU Coolers</strong>
+            </p>
+            <p>The CPU cooler may consist of a
+              <strong>heat sink</strong> or combination of a heat sink and fan. These cooling systems are generally referred to as
+              <em>
+                <strong>air cooling</strong>
+              </em> and are often used in conjunction with systems that are designed to improve airflow.
+            </p>
+
+            <p style="font-size:15px; margin:0;">
+              <strong>Liquid CPU Cooling</strong>
+            </p>
+            <p>Another type of CPU cooling is called
+              <em>
+                <strong>liquid cooling</strong>
+              </em>, where liquid circulates liquid through small pipes in a heat sink, drawing heat from the CPU to a dedicated
+              radiator located on the system case or enclosure, where it is released into the ambient air outside of the
+              system. The cooled liquid travels back through the system to the CPU to continue the process.</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="ramModal" tabindex="-1" role="dialog" aria-labelledby="ramModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="coolerModal">Ram memory</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12 content">
+            <img src="../../../../../assets/images/tutorialComponent/ramModal.png">
+            <p>RAM is your system's
+              <strong>short-term memory</strong>. Whenever your computer performs calculations, it temporarily stores the data in
+              the RAM until it is needed.
+            </p>
+            <p>This
+              <strong>short-term memory disappears</strong> when the computer is turned off. If you're working on a document, spreadsheet,
+              or other type of file, you'll need to
+              <strong>save</strong> it to avoid losing it. When you save a file, the data is written to the
+              <strong>hard drive</strong>, which acts as
+              <strong>long-term storage</strong>.
+            </p>
+            <p>RAM is measured in
+              <strong>megabytes (MB) or gigabytes (GB)</strong>. The
+              <strong>more RAM</strong> you have, the more things your computer can do at the same time. If you don't have enough
+              RAM, you may notice that your computer is sluggish when you have several programs open. Because of this, many
+              people add
+              <strong>extra RAM</strong> to their computers to improve performance.
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay overlay-boxify" [ngClass]="{'open': isOpen}">
+    <nav>
+        <ul>
+            <li><a routerLink="../configurator/case"><i class="fa fa-desktop"></i>Configure</a></li>
+            <li><a routerLink=""><i class="fa fa-flash"></i>Home</a></li>
+            <li><a routerLink="#screenshots"><i class="fa fa-heart"></i>Blog</a></li>
+        </ul>
+    </nav>
+  </div>
