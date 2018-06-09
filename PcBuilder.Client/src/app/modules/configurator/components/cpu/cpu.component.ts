@@ -84,7 +84,7 @@ export class CpuComponent implements OnInit {
       },
       {
         id: 3,
-        title: 'Intel Kaby Lake, Celeron Dual-Core G3930 2.90GHz box',
+        title: 'Intel Kaby Lake, Dual-Core G3930 2.90GHz box',
         price: 100,
         socket: '1151',
         motherboards: ['ATX', 'MTX'],

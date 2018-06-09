@@ -82,7 +82,7 @@ export class RamComponent implements OnInit {
       },
       {
         id: 3,
-        title: 'Patriot Viper Elite Red 8GB DDR4 2400MHz CL15 1.2v Dual Channel Kit',
+        title: 'Patriot Viper Elite Red 8GB DDR4 2400MHz CL15 1.2v',
         price: 100,
         socket: '1151',
         motherboards: ['ATX', 'MTX'],
