@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Business.Repository;
+using Data.Core.Interfaces;
 using Data.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +33,16 @@ namespace PcBuilder.Server
                 Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-           
+
+            services.AddScoped<ICaseRepository, CaseRepository>();
+            services.AddScoped<ICpuRepository, CpuRepository>();
+            services.AddScoped<ICoolerRepository, CoolerRepository>();
+            services.AddScoped<IMotherboardRepository, MotherboardRepository>();
+            services.AddScoped<IRamRepository, RamRepository>();
+            services.AddScoped<IVideoCardRepository, VideoCardRepository>();
+            services.AddScoped<IStorageRepository, StorageRepository>();
+            services.AddScoped<IPowerSupplyRepository, PowerSupplyRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,5 @@
 ﻿using Data.Core.Configuration;
 using Data.Core.Domain;
-using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data.Persistence

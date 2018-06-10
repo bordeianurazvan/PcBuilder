@@ -9,7 +9,7 @@ namespace Data.Core.Interfaces
     public interface IGenericRepository<T> where T: IProduct
     {
         Task<bool> DeleteAsync(Guid id);
-        Task<List<T>> GetAllAsync();
+        Task<List<T>> GetAllAsync(ProductFilter filter);
         Task<T> GetByIdAsync(Guid id);
         Task<T> InsertAsync(T entity);
         Task<bool> UpdateAsync(T entity);

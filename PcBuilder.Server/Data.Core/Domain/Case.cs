@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Core.Domain
@@ -21,9 +22,9 @@ namespace Data.Core.Domain
 
 
         [NotMapped]
-        public string[] _motherboardFormFactor
+        public List<string> _motherboardFormFactor
         {
-            get => MotherBoardFormFactor == null ? null : JsonConvert.DeserializeObject<string[]>(MotherBoardFormFactor);
+            get => MotherBoardFormFactor == null ? null : JsonConvert.DeserializeObject<List<string>>(MotherBoardFormFactor);
             set => MotherBoardFormFactor = JsonConvert.SerializeObject(value);
         }
 

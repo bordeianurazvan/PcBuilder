@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
@@ -21,9 +22,9 @@ namespace Data.Core.Domain
         public double Noise { get; set; }
 
         [NotMapped]
-        public string[] _compatibleSockets
+        public List<string> _compatibleSockets
         {
-            get => CompatibleSockets == null ? null : JsonConvert.DeserializeObject<string[]>(CompatibleSockets);
+            get => CompatibleSockets == null ? null : JsonConvert.DeserializeObject<List<string>>(CompatibleSockets);
             set => CompatibleSockets = JsonConvert.SerializeObject(value);
         }
 
