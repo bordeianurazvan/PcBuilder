@@ -8,34 +8,33 @@ using Microsoft.AspNetCore.Mvc;
 namespace PcBuilder.Server.Controllers
 {
     [Route("api/[controller]")]
-    [Produces("application/json")]
-    public class CpusController : Controller
+    [ApiController]
+    public class RamsController : Controller
     {
-        private readonly ICpuRepository _repository;
-        public CpusController(ICpuRepository repository)
+        private readonly IRamRepository _repository;
+        public RamsController(IRamRepository repository)
         {
             _repository = repository;
         }
 
         [HttpGet]
-        public async Task<List<Cpu>> Get(string filterObject)
+        public async Task<List<Ram>> Get(string filterObject)
         {
             var productFilter = new ProductFilter(filterObject);
             return await _repository.GetAllAsync(productFilter);
         }
 
-        [HttpGet("{cpuId}")]
-        public async Task<Cpu> GetById(Guid cpuId)
+        [HttpGet("{ramId}")]
+        public async Task<Ram> GetById(Guid ramId)
         {
-            return await _repository.GetByIdAsync(cpuId);
+            return await _repository.GetByIdAsync(ramId);
         }
 
         [HttpPost]
-        public async Task<Cpu> Insert([FromBody] Cpu cpu)
+        public async Task<Ram> Insert([FromBody] Ram ram)
         {
-            return await _repository.InsertAsync(cpu);
+            return await _repository.InsertAsync(ram);
 
         }
-
     }
 }
