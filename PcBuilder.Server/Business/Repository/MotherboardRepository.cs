@@ -19,10 +19,15 @@ namespace Business.Repository
 
         public override async Task<List<Motherboard>> GetAllAsync(ProductFilter filter)
         {
-            var computerCase = await _context.Cases.FirstOrDefaultAsync(cc => cc.Id == filter.CaseId);
-            var cpu = await _context.Cpus.FirstOrDefaultAsync(c => c.Id == filter.CpuId);
-            return await _entities.Where(m => computerCase._motherboardFormFactor.Contains(m.FormFactor) && m.Socket.Equals(cpu.Socket) &&
-            m.MaximumRamMemory <= cpu.MaximumRamMemory && m.RamFrequency <= cpu.RamFrequency && m.TypeOfRam.Equals(cpu.TypeOfRam)).ToListAsync();
+            if (filter != null && filter.CaseId != Guid.Empty && filter.CpuId != Guid.Empty)
+            {
+                var computerCase = await _context.Cases.FirstOrDefaultAsync(cc => cc.Id == filter.CaseId);
+                var cpu = await _context.Cpus.FirstOrDefaultAsync(c => c.Id == filter.CpuId);
+                return await _entities.Where(m => computerCase._motherboardFormFactor.Contains(m.FormFactor) && m.Socket.Equals(cpu.Socket) &&
+                                                  m.MaximumRamMemory <= cpu.MaximumRamMemory && m.RamFrequency >= cpu.RamFrequency && m.TypeOfRam.Equals(cpu.TypeOfRam)).ToListAsync();
+            }
+            return await _entities.ToListAsync();
+
         }
     }
 }

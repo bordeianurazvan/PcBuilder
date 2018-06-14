@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigComputerService } from '../../shared/services/config-computer.service';
+import { Motherboard } from '../../shared/models/motherboard';
 
 @Component({
   selector: 'app-motherboard',
@@ -8,10 +9,9 @@ import { ConfigComputerService } from '../../shared/services/config-computer.ser
   styleUrls: ['./motherboard.component.css']
 })
 export class MotherboardComponent implements OnInit {
-  motherboards: any[];
+  motherboards: Motherboard[];
   isDisabled = true;
-  selectedMoatherboardId: number;
-  indexOfMotherboardAlreadySelected: any;
+  selectedMoatherboardId: string;
   currentTotalPrice: number;
 
   motherboardSelected($event) {
@@ -23,14 +23,16 @@ export class MotherboardComponent implements OnInit {
       for (let i = 0; i < this.motherboards.length; i++) {
         if ($event !== this.motherboards[i].id) {
           if (this.motherboards[i].isSelected) {
-            this.currentTotalPrice = this.currentTotalPrice - this.getMotherboardById(this.motherboards[i].id).price;
+            this.currentTotalPrice =
+              this.currentTotalPrice - this.getMotherboardById(this.motherboards[i].id).price;
           }
           this.motherboards[i].isSelected = false;
         }
       }
       this.selectedMoatherboardId = $event;
       this.isDisabled = false;
-      this.currentTotalPrice = this.currentTotalPrice + this.getMotherboardById(this.selectedMoatherboardId).price;
+      this.currentTotalPrice =
+        this.currentTotalPrice + this.getMotherboardById(this.selectedMoatherboardId).price;
     }
   }
 
@@ -46,64 +48,27 @@ export class MotherboardComponent implements OnInit {
     this.router.navigate(['configurator/ram']);
   }
 
-  getMotherboardById(id: number) {
+  getMotherboardById(id: string) {
     if (id !== undefined) {
       return this.motherboards.find(c => c.id === id);
     }
   }
 
-  constructor(private router: Router, private configService: ConfigComputerService) { }
+  constructor(private router: Router, private configService: ConfigComputerService) {}
 
   ngOnInit() {
-    this.currentTotalPrice = this.configService.price;
-    this.motherboards = [
-      {
-        id: 1,
-        title: 'GIGABYTE GA-H110-D3A',
-        price: 330,
-        socket: '1151 v2',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 2,
-        title: 'MSI B350 TOMAHAWK',
-        price: 450,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 3,
-        title: 'GIGABYTE AORUS Z370 Gaming K3',
-        price: 380,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      }
-    ];
-    if (this.configService.computer.motherboardId !== undefined) {
-      this.indexOfMotherboardAlreadySelected = this.motherboards.find(
-        c => c.id === this.configService.computer.motherboardId
-      ).isSelected = true;
-      if (this.indexOfMotherboardAlreadySelected !== undefined) {
+    this.configService.motherboards.getAll(JSON.stringify(this.configService.computer)).subscribe(response => {
+      this.motherboards = response;
+      this.currentTotalPrice = this.configService.price;
+
+      if (this.configService.computer.motherboardId !== '') {
+        this.motherboards.find(
+          c => c.id === this.getMotherboardById(this.configService.computer.motherboardId).id
+        ).isSelected = true;
         this.isDisabled = false;
       }
       this.selectedMoatherboardId = this.configService.computer.motherboardId;
-    }
+    });
     console.log(this.configService.computer);
   }
-
 }

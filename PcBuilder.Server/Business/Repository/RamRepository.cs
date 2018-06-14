@@ -19,9 +19,14 @@ namespace Business.Repository
 
         public override async Task<List<Ram>> GetAllAsync(ProductFilter filter)
         {
-            var motherboard = await _context.Motherboards.FirstOrDefaultAsync(m => m.Id == filter.MotherboardId);
-            return await _entities.Where(r =>r.Type.Equals(motherboard.TypeOfRam) && r.Capacity <= motherboard.MaximumRamMemory &&
-            r.Frequency <= motherboard.RamFrequency).ToListAsync();
+            if (filter != null && filter.MotherboardId != Guid.Empty)
+            {
+                var motherboard = await _context.Motherboards.FirstOrDefaultAsync(m => m.Id == filter.MotherboardId);
+                return await _entities.Where(r => r.Type.Equals(motherboard.TypeOfRam) && r.Capacity <= motherboard.MaximumRamMemory &&
+                                                  r.Frequency <= motherboard.RamFrequency).ToListAsync();
+            }
+            return await _entities.ToListAsync();
+
         }
     }
 }

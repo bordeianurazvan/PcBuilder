@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigComputerService } from '../../shared/services/config-computer.service';
 import { Router } from '@angular/router';
+import { VideoCard } from '../../shared/models/videoCard';
 
 @Component({
   selector: 'app-videocard',
@@ -8,10 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./videoCard.component.css']
 })
 export class VideoCardComponent implements OnInit {
-  videocards: any[];
+  videocards: VideoCard[];
   isDisabled = true;
-  selectedvideocardId: number;
-  indexOfVideocardAlreadySelected: any;
+  selectedvideocardId: string;
   currentTotalPrice: number;
 
   videocardSelected($event) {
@@ -47,7 +47,7 @@ export class VideoCardComponent implements OnInit {
     this.router.navigate(['configurator/storage']);
   }
 
-  getVideocardById(id: number) {
+  getVideocardById(id: string) {
     if (id !== undefined) {
       return this.videocards.find(c => c.id === id);
     }
@@ -56,54 +56,18 @@ export class VideoCardComponent implements OnInit {
   constructor(private router: Router, private configService: ConfigComputerService) { }
 
   ngOnInit() {
-    this.currentTotalPrice = this.configService.price;
-    this.videocards = [
-      {
-        id: 1,
-        title: 'Sapphire Radeon RX 580 PULSE 8GB DDR5 256-bit',
-        price: 99,
-        socket: '1151 v2',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 2,
-        title: 'GIGABYTE Radeon RX Vega56 8G HBM2 GAMING OC',
-        price: 100,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 3,
-        title: 'Inno3D GeForce GTX 1060 Twin X2 3GB DDR5 192-bit',
-        price: 100,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      }
-    ];
-    if (this.configService.computer.videocardId !== undefined) {
-      this.indexOfVideocardAlreadySelected = this.videocards.find(
-        c => c.id === this.configService.computer.videocardId
-      ).isSelected = true;
-      if (this.indexOfVideocardAlreadySelected !== undefined) {
+    this.configService.videocards.getAll(JSON.stringify(this.configService.computer)).subscribe(response => {
+      this.videocards = response;
+      this.currentTotalPrice = this.configService.price;
+      if (this.configService.computer.videocardId !== '') {
+        this.videocards.find(
+          c => c.id === this.getVideocardById(this.configService.computer.videocardId).id
+        ).isSelected = true;
         this.isDisabled = false;
       }
       this.selectedvideocardId = this.configService.computer.videocardId;
-    }
+    });
+
     console.log(this.configService.computer);
   }
 

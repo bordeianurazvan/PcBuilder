@@ -8,5 +8,6 @@ namespace Data.Core.Domain
         string Title { get; set; }
         double Price { get; set; }
         string ImageUrl { get; set; }
+        string Url { get; set; }
     }
 }

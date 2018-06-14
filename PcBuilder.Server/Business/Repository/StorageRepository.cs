@@ -19,13 +19,18 @@ namespace Business.Repository
 
         public override async Task<List<Storage>> GetAllAsync(ProductFilter filter)
         {
-            var storages = new List<Storage>();
-            var motherboard = await _context.Motherboards.FirstOrDefaultAsync(m => m.Id == filter.MotherboardId);
-            if (motherboard.M2 != 0)
-                storages.AddRange(_entities.Where(s => s.FormFactor.Equals("M.2")));
+            if (filter != null && filter.MotherboardId != Guid.Empty)
+            {
+                var storages = new List<Storage>();
+                var motherboard = await _context.Motherboards.FirstOrDefaultAsync(m => m.Id == filter.MotherboardId);
+                if (motherboard.M2 != 0)
+                    storages.AddRange(_entities.Where(s => s.FormFactor.Equals("M.2")));
 
-            storages.AddRange(_entities.Where(s => s.Interface.Equals("SATA-III")));
-            return storages.ToList();
+                storages.AddRange(_entities.Where(s => s.Interface.Equals("SATA-III")).Distinct());
+                return storages.ToList();
+            }
+            return await _entities.ToListAsync();
+
         }
     }
 

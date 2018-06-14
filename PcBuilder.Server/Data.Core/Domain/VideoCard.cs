@@ -8,6 +8,7 @@ namespace Data.Core.Domain
         public string Title { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
+        public string Url { get; set; }
         public string Interface { get; set; }
         public string Resolution { get; set; }
         public string Type { get; set; }
@@ -20,19 +21,19 @@ namespace Data.Core.Domain
 
         public static VideoCard Create(string title, double price, string imageUrl, string videoCardInterface,
             string resolution, string type, int memorySize, int memoryBus,
-            double memoryFrequency, double baseFrequency, double gpuBoostClock,int width)
+            double memoryFrequency, double baseFrequency, double gpuBoostClock,int width, string url)
         {
             var instance = new VideoCard
             {
                 Id = new Guid()
             };
             instance.Update(title, price, imageUrl, videoCardInterface, resolution, type, memorySize, memoryBus,
-                memoryFrequency, baseFrequency, gpuBoostClock,width);
+                memoryFrequency, baseFrequency, gpuBoostClock,width,url);
             return instance;
         }
 
         private void Update(string title, double price, string imageUrl, string videoCardInterface, string resolution, string type, 
-            int memorySize, int memoryBus, double memoryFrequency, double baseFrequency, double gpuBoostClock, int width)
+            int memorySize, int memoryBus, double memoryFrequency, double baseFrequency, double gpuBoostClock, int width, string url)
         {
             Title = title;
             Price = price;
@@ -46,6 +47,7 @@ namespace Data.Core.Domain
             BaseFrequency = baseFrequency;
             GpuBoostClock = gpuBoostClock;
             Width = width;
+            Url = url;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace PcBuilder.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Case>> Get(string filterObject)
+        public async Task<List<Case>> Get([FromQuery]string filterObject)
         {
            var productFilter = new ProductFilter(filterObject);
            return await _repository.GetAllAsync(productFilter);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigComputerService } from '../../shared/services/config-computer.service';
+import { Ram } from '../../shared/models/ram';
 
 @Component({
   selector: 'app-ram',
@@ -8,10 +9,9 @@ import { ConfigComputerService } from '../../shared/services/config-computer.ser
   styleUrls: ['./ram.component.css']
 })
 export class RamComponent implements OnInit {
-  rams: any[];
+  rams: Ram[];
   isDisabled = true;
-  selectedRamId: number;
-  indexOfRamAlreadySelected: any;
+  selectedRamId: string;
   currentTotalPrice: number;
 
   ramSelected($event) {
@@ -23,7 +23,8 @@ export class RamComponent implements OnInit {
       for (let i = 0; i < this.rams.length; i++) {
         if ($event !== this.rams[i].id) {
           if (this.rams[i].isSelected) {
-            this.currentTotalPrice = this.currentTotalPrice - this.getRamById(this.rams[i].id).price;
+            this.currentTotalPrice =
+              this.currentTotalPrice - this.getRamById(this.rams[i].id).price;
           }
           this.rams[i].isSelected = false;
         }
@@ -46,63 +47,27 @@ export class RamComponent implements OnInit {
     this.router.navigate(['configurator/videocard']);
   }
 
-  getRamById(id: number) {
+  getRamById(id: string) {
     if (id !== undefined) {
       return this.rams.find(c => c.id === id);
     }
   }
-  constructor(private router: Router, private configService: ConfigComputerService) { }
+  constructor(private router: Router, private configService: ConfigComputerService) {}
 
   ngOnInit() {
-    this.currentTotalPrice = this.configService.price;
-    this.rams = [
-      {
-        id: 1,
-        title: 'HyperX Fury Black 8GB DDR4 2400MHz CL15 1.2v',
-        price: 99,
-        socket: '1151 v2',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 2,
-        title: 'ADATA Premier 4GB DDR4 2400MHz CL17 1.2v',
-        price: 100,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 3,
-        title: 'Patriot Viper Elite Red 8GB DDR4 2400MHz CL15 1.2v',
-        price: 100,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      }
-    ];
-    if (this.configService.computer.ramId !== undefined) {
-      this.indexOfRamAlreadySelected = this.rams.find(
-        c => c.id === this.configService.computer.ramId
-      ).isSelected = true;
-      if (this.indexOfRamAlreadySelected !== undefined) {
-        this.isDisabled = false;
-      }
-      this.selectedRamId = this.configService.computer.ramId;
-    }
+    this.configService.rams
+      .getAll(JSON.stringify(this.configService.computer))
+      .subscribe(response => {
+        this.rams = response;
+        this.currentTotalPrice = this.configService.price;
+        if (this.configService.computer.ramId !== '') {
+          this.rams.find(
+            c => c.id === this.getRamById(this.configService.computer.ramId).id
+          ).isSelected = true;
+          this.isDisabled = false;
+        }
+        this.selectedRamId = this.configService.computer.ramId;
+      });
     console.log(this.configService.computer);
   }
-
 }

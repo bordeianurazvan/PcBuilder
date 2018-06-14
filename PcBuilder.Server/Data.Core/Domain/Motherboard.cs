@@ -8,6 +8,7 @@ namespace Data.Core.Domain
         public string Title { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
+        public string Url { get; set; }
         public string FormFactor { get; set; }
         public string Socket { get; set; }
         public int Sata { get; set; }
@@ -21,19 +22,19 @@ namespace Data.Core.Domain
 
         public static Motherboard Create(string title, double price, string imageUrl, string formFactor, string socket,
             int sata, int m2, string network, string typeOfRam, double maximumRamMemory,
-            double ramFrequency, int ramSlots, string graphicInterface)
+            double ramFrequency, int ramSlots, string graphicInterface,string url)
         {
             var instance = new Motherboard
             {
                 Id = new Guid()
             };
             instance.Update(title, price, imageUrl, formFactor, socket, sata, m2, network, typeOfRam, maximumRamMemory,
-                ramFrequency, ramSlots, graphicInterface);
+                ramFrequency, ramSlots, graphicInterface, url);
             return instance;
         }
 
         private void Update(string title, double price, string imageUrl, string formFactor, string socket, int sata, int m2, string network, 
-            string typeOfRam, double maximumRamMemory, double ramFrequency, int ramSlots, string graphicInterface)
+            string typeOfRam, double maximumRamMemory, double ramFrequency, int ramSlots, string graphicInterface, string url)
         {
             Title = title;
             Price = price;
@@ -48,6 +49,7 @@ namespace Data.Core.Domain
             RamFrequency = ramFrequency;
             RamSlots = ramSlots;
             GraphicInterface = graphicInterface;
+            Url = url;
         }
     }
 }

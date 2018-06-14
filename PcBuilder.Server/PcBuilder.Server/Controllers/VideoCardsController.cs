@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PcBuilder.Server.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("api/videocards")]
+    [Produces("application/json")]
     public class VideoCardsController : Controller
     {
         private readonly IVideoCardRepository _repository;

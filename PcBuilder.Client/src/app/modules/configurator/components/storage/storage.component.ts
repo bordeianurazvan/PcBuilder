@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
 export class StorageComponent implements OnInit {
   storages: any[];
   isDisabled = true;
-  selectedStorageId: number;
-  indexOfStorageAlreadySelected: any;
+  selectedStorageId: string;
   currentTotalPrice: number;
 
   storageSelected($event) {
@@ -46,7 +45,7 @@ export class StorageComponent implements OnInit {
     this.router.navigate(['configurator/powersupply']);
   }
 
-  getStorageById(id: number) {
+  getStorageById(id: string) {
     if (id !== undefined) {
       return this.storages.find(c => c.id === id);
     }
@@ -56,54 +55,18 @@ export class StorageComponent implements OnInit {
   constructor(private router: Router, private configService: ConfigComputerService) { }
 
   ngOnInit() {
-    this.currentTotalPrice = this.configService.price;
-    this.storages = [
-      {
-        id: 1,
-        title: 'Kingston SSDNow UV400 120GB SATA-III 2.5 inch',
-        price: 99,
-        socket: '1151 v2',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 2,
-        title: 'Samsung 860 EVO 250GB SATA-III 2.5 inch',
-        price: 100,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 3,
-        title: 'WD Blue 1TB SATA-III 7200 RPM 64MB',
-        price: 100,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      }
-    ];
-    if (this.configService.computer.storageId !== undefined) {
-      this.indexOfStorageAlreadySelected = this.storages.find(
-        c => c.id === this.configService.computer.storageId
-      ).isSelected = true;
-      if (this.indexOfStorageAlreadySelected !== undefined) {
+    this.configService.storages.getAll(JSON.stringify(this.configService.computer)).subscribe(response => {
+      this.storages = response;
+      this.currentTotalPrice = this.configService.price;
+      if (this.configService.computer.storageId !== '') {
+        this.storages.find(
+          c => c.id === this.getStorageById(this.configService.computer.storageId).id
+        ).isSelected = true;
         this.isDisabled = false;
       }
       this.selectedStorageId = this.configService.computer.storageId;
-    }
+
+    });
     console.log(this.configService.computer);
   }
 

@@ -13,13 +13,14 @@ namespace Data.Core.Domain
         public string Title { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
+        public string Url { get; set; }
         public string Type { get; set; }
         public int HeatPipes { get; set; }
         public int Height { get; set; }
         public int Fans { get; set; }
         public int FanSize { get; set; }
-        public int FanSpeed { get; set; }
-        public double Noise { get; set; }
+        public string FanSpeed { get; set; }
+        public string Noise { get; set; }
 
         [NotMapped]
         public List<string> _compatibleSockets
@@ -29,18 +30,18 @@ namespace Data.Core.Domain
         }
 
         public static Cooler Create(string title, double price, string imageUrl, string compatibleSockets,
-            string type, int heatPipes, int height, int fans, int fanSize, int fanSpeed, double noise)
+            string type, int heatPipes, int height, int fans, int fanSize, string fanSpeed, string noise, string url)
         {
             var instance = new Cooler
             {
                 Id = new Guid()
             };
             instance.Update(title, price, imageUrl, compatibleSockets, type, heatPipes, height, fans, fanSize, fanSpeed,
-                noise);
+                noise,url);
             return instance;
         }
 
-        private void Update(string title, double price, string imageUrl, string compatibleSockets, string type, int heatPipes, int height, int fans, int fanSize, int fanSpeed, double noise)
+        private void Update(string title, double price, string imageUrl, string compatibleSockets, string type, int heatPipes, int height, int fans, int fanSize, string fanSpeed, string noise, string url)
         {
             Title = title;
             Price = price;
@@ -53,6 +54,7 @@ namespace Data.Core.Domain
             FanSize = fanSize;
             FanSpeed = fanSpeed;
             Noise = noise;
+            Url = url;
         }
     }
 }

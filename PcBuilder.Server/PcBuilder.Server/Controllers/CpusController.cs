@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PcBuilder.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/cpus")]
     [Produces("application/json")]
     public class CpusController : Controller
     {

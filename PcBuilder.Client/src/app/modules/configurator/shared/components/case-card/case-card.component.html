@@ -1,27 +1,29 @@
 <div class="card" [ngClass]="{'selected': case.isSelected}">
   <div class="card_image">
-    <img src="../../../../../assets/images/computerParts/computer_case.png">
+    <img *ngIf="case.imageUrl" [src]="case.imageUrl">
     <div class="info">
       <h2>Specifications:</h2>
       <ul>
         <li>
           <strong>Type:</strong>{{case.type}}</li>
         <li>
-          <strong>Motherboards: </strong>{{case.motherboards}}</li>
+          <strong>Motherboards: </strong>
+          <span *ngFor="let motherboard of case._motherboardFormFactor"> {{motherboard}} </span>
+        </li>
         <li>
-          <strong>Zones: </strong>9 - 11</li>
+          <strong>Storage slots: </strong>{{case.numberOfSlots}}</li>
         <li>
-          <strong>Height: </strong>2 - 3 feet</li>
+          <strong>Cooler Height: </strong>{{case.coolerHeight}} mm</li>
         <li>
-          <strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall</li>
+          <strong>Video-card Width: </strong>{{case.videoCardWidth}} mm</li>
         <li>
-          <strong>Features: </strong>Tolerates heat</li>
+          <strong>Fans: </strong>{{case.fans}}/{{case.totalFans}}</li>
       </ul>
     </div>
   </div>
   <div class="card__content">
     <div class="card__title"> {{case.title}}</div>
-    <p class="card__text">{{case.price}}$ </p>
+    <p class="card__text">{{case.price}} $</p>
     <div class="buttons">
       <button class="btn btn--block card__btn" (click)="onSelect()">Select</button>
     </div>

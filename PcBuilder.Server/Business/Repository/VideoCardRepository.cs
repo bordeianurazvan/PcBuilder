@@ -19,12 +19,17 @@ namespace Business.Repository
 
         public override async Task<List<VideoCard>> GetAllAsync(ProductFilter filter)
         {
-            var motherboard = await _context.Motherboards.FirstOrDefaultAsync(m => m.Id == filter.MotherboardId);
-            var computerCase = await _context.Cases.FirstOrDefaultAsync(cc => cc.Id == filter.CaseId);
+            if (filter != null && filter.MotherboardId != Guid.Empty && filter.CaseId != Guid.Empty)
+            {
+                var motherboard = await _context.Motherboards.FirstOrDefaultAsync(m => m.Id == filter.MotherboardId);
+                var computerCase = await _context.Cases.FirstOrDefaultAsync(cc => cc.Id == filter.CaseId);
 
-            return await _entities.Where(vc =>
-                    vc.Interface.Equals(motherboard.GraphicInterface) && vc.Width <= computerCase.VideoCardWidth)
-                .ToListAsync();
+                return await _entities.Where(vc =>
+                        vc.Interface.Equals(motherboard.GraphicInterface) && vc.Width <= computerCase.VideoCardWidth)
+                    .ToListAsync();
+            }
+            return await _entities.ToListAsync();
+
         }
     }
 }

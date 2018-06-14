@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigComputerService } from '../../shared/services/config-computer.service';
+import { PowerSupply } from '../../shared/models/powerSupply';
 
 @Component({
-  selector: 'app-powerSupply',
+  selector: 'app-powersupply',
   templateUrl: './powerSupply.component.html',
   styleUrls: ['./powerSupply.component.css']
 })
 export class PowerSupplyComponent implements OnInit {
-  powersupplies: any[];
+  powersupplies: PowerSupply[];
   isDisabled = true;
-  selectedPowersupplyId: number;
-  indexOfPowersupplyAlreadySelected: any;
+  selectedPowersupplyId: string;
   currentTotalPrice: number;
 
   powersupplySelected($event) {
@@ -45,7 +45,7 @@ export class PowerSupplyComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  getPowersupplyById(id: number) {
+  getPowersupplyById(id: string) {
     if (id !== undefined) {
       return this.powersupplies.find(c => c.id === id);
     }
@@ -53,54 +53,17 @@ export class PowerSupplyComponent implements OnInit {
   constructor(private router: Router, private configService: ConfigComputerService) { }
 
   ngOnInit() {
-    this.currentTotalPrice = this.configService.price;
-    this.powersupplies = [
-      {
-        id: 1,
-        title: 'Corsair NEW VS Series VS550',
-        price: 95,
-        socket: '1151 v2',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 2,
-        title: 'Seasonic S12II-520 Bronze 520W',
-        price: 85,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 3,
-        title: 'Seasonic S12II-620 Bronze 620W',
-        price: 100,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      }
-    ];
-    if (this.configService.computer.powersupplyId !== undefined) {
-      this.indexOfPowersupplyAlreadySelected = this.powersupplies.find(
-        c => c.id === this.configService.computer.powersupplyId
-      ).isSelected = true;
-      if (this.indexOfPowersupplyAlreadySelected !== undefined) {
+    this.configService.powersupplies.getAll(JSON.stringify(this.configService.computer)).subscribe(response => {
+      this.powersupplies = response;
+      this.currentTotalPrice = this.configService.price;
+      if (this.configService.computer.motherboardId !== '') {
+        this.powersupplies.find(
+          c => c.id === this.getPowersupplyById(this.configService.computer.powersupplyId).id
+        ).isSelected = true;
         this.isDisabled = false;
       }
       this.selectedPowersupplyId = this.configService.computer.powersupplyId;
-    }
+    });
     console.log(this.configService.computer);
   }
 

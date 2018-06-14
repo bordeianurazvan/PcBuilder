@@ -1,6 +1,7 @@
 <div class="container-fluid">
-  <h3>Please select a product:</h3>
-
+  <h3 *ngIf="coolers && coolers.length != 0">Please select a product:</h3>
+  <h3 *ngIf="!coolers || coolers.length == 0">There are no coolers compatible with selected CPU :(</h3>
+  <h3 *ngIf="cpuHasStockCooler">Selected Cpu has already a stock cooler, so you can skip this step</h3>
   <div class="col-sm-12">
     <ul class="cards" >
       
@@ -12,7 +13,7 @@
   <div class="footer">
       <div class="col-sm-12 footer_content">
         <div class="col-sm-3">
-            <p><span class="total_price">Total: ${{currentTotalPrice}}</span></p>
+            <p><span class="total_price">Total: ${{currentTotalPrice | number : '1.2-2'}}</span></p>
         </div>
         <div class="col-sm-6">
             <button class="btn btn-warning" (click)="goToCpu()"> < Prev</button>

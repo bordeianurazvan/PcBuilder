@@ -46,6 +46,8 @@ namespace Data.Persistence.Migrations
 
                     b.Property<string>("Type");
 
+                    b.Property<string>("Url");
+
                     b.Property<int>("VideoCardWidth");
 
                     b.HasKey("Id");
@@ -63,7 +65,7 @@ namespace Data.Persistence.Migrations
 
                     b.Property<int>("FanSize");
 
-                    b.Property<int>("FanSpeed");
+                    b.Property<string>("FanSpeed");
 
                     b.Property<int>("Fans");
 
@@ -74,7 +76,7 @@ namespace Data.Persistence.Migrations
                     b.Property<string>("ImageUrl")
                         .IsRequired();
 
-                    b.Property<double>("Noise");
+                    b.Property<string>("Noise");
 
                     b.Property<double>("Price");
 
@@ -83,6 +85,8 @@ namespace Data.Persistence.Migrations
                         .HasMaxLength(255);
 
                     b.Property<string>("Type");
+
+                    b.Property<string>("Url");
 
                     b.HasKey("Id");
 
@@ -129,6 +133,8 @@ namespace Data.Persistence.Migrations
                     b.Property<string>("TypeOfRam")
                         .IsRequired();
 
+                    b.Property<string>("Url");
+
                     b.HasKey("Id");
 
                     b.ToTable("Cpus");
@@ -172,6 +178,8 @@ namespace Data.Persistence.Migrations
                     b.Property<string>("TypeOfRam")
                         .IsRequired();
 
+                    b.Property<string>("Url");
+
                     b.HasKey("Id");
 
                     b.ToTable("Motherboards");
@@ -186,7 +194,7 @@ namespace Data.Persistence.Migrations
 
                     b.Property<string>("Cooler");
 
-                    b.Property<int>("Efficiency");
+                    b.Property<string>("Efficiency");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired();
@@ -195,13 +203,15 @@ namespace Data.Persistence.Migrations
 
                     b.Property<string>("Pfc");
 
-                    b.Property<int>("Power");
+                    b.Property<string>("Power");
 
                     b.Property<double>("Price");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(255);
+
+                    b.Property<string>("Url");
 
                     b.HasKey("Id");
 
@@ -233,6 +243,8 @@ namespace Data.Persistence.Migrations
                     b.Property<string>("Type")
                         .IsRequired();
 
+                    b.Property<string>("Url");
+
                     b.HasKey("Id");
 
                     b.ToTable("Rams");
@@ -243,7 +255,7 @@ namespace Data.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Capacity");
+                    b.Property<string>("Capacity");
 
                     b.Property<string>("FormFactor")
                         .IsRequired();
@@ -256,15 +268,17 @@ namespace Data.Persistence.Migrations
 
                     b.Property<double>("Price");
 
-                    b.Property<double>("ReadSpeed");
+                    b.Property<string>("ReadSpeed");
 
-                    b.Property<double>("Rpm");
+                    b.Property<string>("Rpm");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(255);
 
-                    b.Property<double>("WriteSpeed");
+                    b.Property<string>("Url");
+
+                    b.Property<string>("WriteSpeed");
 
                     b.HasKey("Id");
 
@@ -301,6 +315,8 @@ namespace Data.Persistence.Migrations
                         .HasMaxLength(255);
 
                     b.Property<string>("Type");
+
+                    b.Property<string>("Url");
 
                     b.Property<int>("Width");
 

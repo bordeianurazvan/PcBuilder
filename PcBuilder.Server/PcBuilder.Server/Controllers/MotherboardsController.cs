@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PcBuilder.Server.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("api/motherboards")]
+    [Produces("application/json")]
     public class MotherboardsController : Controller
     {
         private readonly IMotherboardRepository _repository;

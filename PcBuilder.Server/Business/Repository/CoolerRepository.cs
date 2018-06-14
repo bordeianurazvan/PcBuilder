@@ -19,9 +19,14 @@ namespace Business.Repository
 
         public override  async Task<List<Cooler>> GetAllAsync(ProductFilter filter)
         {
-            var computerCase = await _context.Cases.FirstOrDefaultAsync(cc => cc.Id == filter.CaseId);
-            var cpu = await _context.Cpus.FirstOrDefaultAsync(c => c.Id == filter.CpuId);
-            return await _entities.Where(cool => cool._compatibleSockets.Contains(cpu.Socket).Equals(true) && cool.Height < computerCase.CoolerHeight).ToListAsync();
+            if (filter != null && filter.CpuId != Guid.Empty && filter.CaseId != Guid.Empty)
+            {
+                var computerCase = await _context.Cases.FirstOrDefaultAsync(cc => cc.Id == filter.CaseId);
+                var cpu = await _context.Cpus.FirstOrDefaultAsync(c => c.Id == filter.CpuId);
+                return await _entities.Where(cool => cool._compatibleSockets.Contains(cpu.Socket).Equals(true) && cool.Height < computerCase.CoolerHeight).ToListAsync();
+            }
+            return await _entities.ToListAsync();
+
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Data.Core.Domain
         public string Title { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
+        public string Url { get; set; }
         public string Socket { get; set; }
         public string Series { get; set; }
         public string Core { get; set; }
@@ -23,19 +24,19 @@ namespace Data.Core.Domain
 
         public static Cpu Create(string title, double price, string imageUrl, string socket, string series, string core,
             int cores, int threads, double baseFrequency, double turboFrequency, double cache, bool hasStockCooler,
-            string typeOfRam, int maximumRamMemory, double ramFrequency)
+            string typeOfRam, int maximumRamMemory, double ramFrequency, string url)
         {
             var instance = new Cpu
             {
                 Id = new Guid()
             };
             instance.Update(title, price, imageUrl, socket, series, core, cores, threads, baseFrequency, turboFrequency,
-                cache, hasStockCooler, typeOfRam, maximumRamMemory, ramFrequency);
+                cache, hasStockCooler, typeOfRam, maximumRamMemory, ramFrequency, url);
             return instance;
         }
 
         private void Update(string title, double price, string imageUrl, string socket, string series, string core, int cores,
-            int threads, double baseFrequency, double turboFrequency, double cache, bool hasStockCooler, string typeOfRam, int maximumRamMemory, double ramFrequency)
+            int threads, double baseFrequency, double turboFrequency, double cache, bool hasStockCooler, string typeOfRam, int maximumRamMemory, double ramFrequency,string url)
         {
             Title = title;
             Price = price;
@@ -52,6 +53,7 @@ namespace Data.Core.Domain
             TypeOfRam = typeOfRam;
             MaximumRamMemory = maximumRamMemory;
             RamFrequency = ramFrequency;
+            Url = url;
         }
     }
 }

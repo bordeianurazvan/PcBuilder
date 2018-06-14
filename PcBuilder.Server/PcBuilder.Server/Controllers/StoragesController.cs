@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PcBuilder.Server.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("api/storages")]
+    [Produces("application/json")]
     public class StoragesController : Controller
     {
         private readonly IStorageRepository _repository;

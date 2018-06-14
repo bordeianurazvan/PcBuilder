@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PcBuilder.Server.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("api/rams")]
+    [Produces("application/json")]
     public class RamsController : Controller
     {
         private readonly IRamRepository _repository;

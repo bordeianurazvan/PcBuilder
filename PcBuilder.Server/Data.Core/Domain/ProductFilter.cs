@@ -23,14 +23,46 @@ namespace Data.Core.Domain
             {
                 filterObject = JObject.Parse(filter);
 
-                CaseId = (Guid) filterObject["caseId"];
-                CpuId = (Guid) filterObject["cpuId"];
-                CoolerId = (Guid) filterObject["coolerId"];
-                MotherboardId = (Guid) filterObject["motherboardId"];
-                RamId = (Guid) filterObject["ramId"];
-                VideoCardId = (Guid) filterObject["videoCardId"];
-                StorageId = (Guid) filterObject["storageId"];
-                PowerSupplyId = (Guid) filterObject["powerSupplyId"];
+                if (!string.IsNullOrEmpty(filterObject["caseId"].ToString()))
+                {
+                    CaseId = Guid.Parse(filterObject["caseId"].ToString());
+                }
+
+                if (!string.IsNullOrEmpty(filterObject["cpuId"].ToString()))
+                {
+                    CpuId = Guid.Parse(filterObject["cpuId"].ToString());
+                }
+
+                if (!string.IsNullOrEmpty(filterObject["coolerId"].ToString()))
+                {
+                    CoolerId = Guid.Parse(filterObject["coolerId"].ToString());
+                }
+
+                if (!string.IsNullOrEmpty(filterObject["motherboardId"].ToString()))
+                {
+                    MotherboardId = Guid.Parse(filterObject["motherboardId"].ToString());
+                }
+
+                if (!string.IsNullOrEmpty(filterObject["ramId"].ToString()))
+                {
+                    RamId = Guid.Parse(filterObject["ramId"].ToString());
+                }
+
+                if (!string.IsNullOrEmpty(filterObject["videocardId"].ToString()))
+                {
+                    VideoCardId = Guid.Parse(filterObject["videocardId"].ToString());
+                }
+
+                if (!string.IsNullOrEmpty(filterObject["storageId"].ToString()))
+                {
+                    StorageId = Guid.Parse(filterObject["storageId"].ToString());
+                }
+
+                if (!string.IsNullOrEmpty(filterObject["powersupplyId"].ToString()))
+                {
+                    PowerSupplyId = Guid.Parse(filterObject["powersupplyId"].ToString());
+                }
+
             }
         }
     }

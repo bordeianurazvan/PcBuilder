@@ -1,21 +1,21 @@
 <div class="card" [ngClass]="{'selected': motherboard.isSelected}">
   <div class="card_image">
-    <img src="../../../../../../assets/images/configurator/motherboard/b350-tomahawk-4ba88a8c63853ec209f582632034f37f.jpg">
+    <img [src]="motherboard.imageUrl">
     <div class="info">
       <h2>Specifications:</h2>
       <ul>
         <li>
-          <strong>Socket:</strong>{{motherboard.socket}}</li>
+          <strong>Cpu socket:</strong>{{motherboard.socket}}</li>
         <li>
-          <strong>Series: </strong>{{motherboard.series}}</li>
+          <strong>Ram slots: </strong>{{motherboard.ramSlots}} x {{motherboard.typeOfRam}}</li>
         <li>
-          <strong>Zones: </strong>9 - 11</li>
+          <strong>Ram frequency: </strong>{{motherboard.ramFrequency}} GHz</li>
         <li>
-          <strong>Height: </strong>2 - 3 feet</li>
+          <strong>Network: </strong>{{motherboard.network}}</li>
         <li>
-          <strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall</li>
+          <strong>Sata/M.2: </strong>{{motherboard.sata}}/{{motherboard.m2}}</li>
         <li>
-          <strong>Features: </strong>Tolerates heat</li>
+          <strong>Graphic interface:</strong>{{motherboard.graphicInterface}}</li>
       </ul>
     </div>
   </div>

@@ -8,6 +8,7 @@ namespace Data.Core.Domain
         public string Title { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
+        public string Url { get; set; }
         public string Type { get; set; }
         public int Capacity { get; set; }
         public double Frequency { get; set; }
@@ -15,17 +16,17 @@ namespace Data.Core.Domain
         public string Standard { get; set; }
 
         public static Ram Create(string title, double price, string imageUrl, string type, int capacity,
-            double frequency, string latency, string standard)
+            double frequency, string latency, string standard, string url)
         {
             var instance = new Ram
             {
                 Id = new Guid()
             };
-            instance.Update(title, price, imageUrl, type, capacity, frequency, latency, standard);
+            instance.Update(title, price, imageUrl, type, capacity, frequency, latency, standard, url);
             return instance;
         }
 
-        private void Update(string title, double price, string imageUrl, string type, int capacity, double frequency, string latency, string standard)
+        private void Update(string title, double price, string imageUrl, string type, int capacity, double frequency, string latency, string standard, string url)
         {
             Title = title;
             Price = price;
@@ -35,6 +36,7 @@ namespace Data.Core.Domain
             Frequency = frequency;
             Latency = latency;
             Standard = standard;
+            Url = url;
         }
     }
 }

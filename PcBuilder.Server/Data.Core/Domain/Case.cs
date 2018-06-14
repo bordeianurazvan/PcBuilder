@@ -13,6 +13,7 @@ namespace Data.Core.Domain
         public string Title { get; set; }
         public double Price { get; set; }
         public string ImageUrl { get; set; }
+        public string Url { get; set; }
         public string Type { get; set; }
         public int NumberOfSlots { get; set; }
         public int CoolerHeight { get; set; }
@@ -30,18 +31,18 @@ namespace Data.Core.Domain
 
         public static Case Create(string title, double price, string imageUrl, string type,
             string motherboardFormFactor, int numberOfSlots, int coolerHeight, int videoCardWidth, int fans,
-            int totalFans)
+            int totalFans,string url)
         {
             var instance = new Case
             {
                 Id = new Guid()
             };
             instance.Update(title, price, imageUrl, type, motherboardFormFactor, numberOfSlots, coolerHeight,
-                videoCardWidth, fans, totalFans);
+                videoCardWidth, fans, totalFans,url);
             return instance;
         }
 
-        private void Update(string title, double price, string imageUrl, string type, string motherboardFormFactor, int numberOfSlots, int coolerHeight, int videoCardWidth, int fans, int totalFans)
+        private void Update(string title, double price, string imageUrl, string type, string motherboardFormFactor, int numberOfSlots, int coolerHeight, int videoCardWidth, int fans, int totalFans, string url)
         {
             Title = title;
             Price = price;
@@ -53,6 +54,7 @@ namespace Data.Core.Domain
             VideoCardWidth = videoCardWidth;
             Fans = fans;
             TotalFans = totalFans;
+            Url = url;
         }
     }
 }

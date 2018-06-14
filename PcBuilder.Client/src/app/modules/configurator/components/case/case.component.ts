@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigComputerService } from '../../shared/services/config-computer.service';
+import { Case } from '../../shared/models/case';
 
 @Component({
   selector: 'app-case',
@@ -8,10 +9,9 @@ import { ConfigComputerService } from '../../shared/services/config-computer.ser
   styleUrls: ['./case.component.css']
 })
 export class CaseComponent implements OnInit {
-  cases: any[] = [];
+  cases: Case[] = [];
   isDisabled = true;
-  selectedCaseId: number;
-  indexOfcaseAlreadySelected: any;
+  selectedCaseId: string;
   currentTotalPrice: number;
 
   caseSelected($event) {
@@ -35,7 +35,7 @@ export class CaseComponent implements OnInit {
     }
   }
 
-  getCaseById(id: number) {
+  getCaseById(id: string) {
     if (id !== undefined) {
       return this.cases.find(c => c.id === id);
     }
@@ -51,53 +51,18 @@ export class CaseComponent implements OnInit {
   constructor(private router: Router, private configService: ConfigComputerService) {}
 
   ngOnInit() {
-    this.currentTotalPrice = this.configService.price;
-    this.cases = [
-      {
-        id: 1,
-        title: 'DEEPCOOL TESSERACT BF BLACK',
-        price: 100,
-        type: 'MidTower',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 2,
-        title: 'DEEPCOOL TESSERACT BF BLACK',
-        price: 85,
-        type: 'MidTower',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 3,
-        title: 'DEEPCOOL TESSERACT BF BLACK',
-        price: 99,
-        type: 'MidTower',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      }
-    ];
-    if (this.configService.computer.caseId !== undefined) {
-      this.indexOfcaseAlreadySelected = this.cases.find(
-        c => c.id === this.configService.computer.caseId
-      ).isSelected = true;
-      if (this.indexOfcaseAlreadySelected !== undefined) {
+    console.log(JSON.stringify(this.configService.computer));
+    this.configService.cases.getAll(JSON.stringify(this.configService.computer)).subscribe(response => {
+      this.cases = response;
+      this.currentTotalPrice = this.configService.price;
+
+      if (this.configService.computer.caseId !== '') {
+        this.cases.find(
+          c => c.id === this.getCaseById(this.configService.computer.caseId).id
+        ).isSelected = true;
         this.isDisabled = false;
       }
       this.selectedCaseId = this.configService.computer.caseId;
-    }
+    });
   }
 }
