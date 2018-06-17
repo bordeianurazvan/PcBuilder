@@ -26,7 +26,7 @@ namespace Business.Repository
                 if (motherboard.M2 != 0)
                     storages.AddRange(_entities.Where(s => s.FormFactor.Equals("M.2")));
 
-                storages.AddRange(_entities.Where(s => s.Interface.Equals("SATA-III")).Distinct());
+                storages.AddRange(_entities.Where(s => s.Interface.Equals("SATA-III") && !s.FormFactor.Equals("M.2")));
                 return storages.ToList();
             }
             return await _entities.ToListAsync();
