@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigComputerService } from '../../shared/services/config-computer.service';
 import { Cooler } from '../../shared/models/cooler';
+import { Computer } from '../../shared/models/Computer';
+import { Case } from '../../shared/models/case';
+import { Cpu } from '../../shared/models/cpu';
 
 @Component({
   selector: 'app-cooler',
@@ -14,6 +17,8 @@ export class CoolerComponent implements OnInit {
   selectedCoolerId: string;
   currentTotalPrice: number;
   cpuHasStockCooler: boolean;
+  caseSelected: Case;
+  cpuSelected: Cpu;
 
   coolerSelected($event) {
     if (this.selectedCoolerId === $event) {
@@ -33,7 +38,15 @@ export class CoolerComponent implements OnInit {
       this.selectedCoolerId = $event;
       this.isDisabled = false;
       this.currentTotalPrice =
-        this.currentTotalPrice + this.getCoolerById(this.selectedCoolerId).price;
+        this.caseSelected.price +
+        this.cpuSelected.price +
+        this.getCoolerById(this.selectedCoolerId).price;
+
+      this.configService.computer = new Computer();
+      this.configService.computer.caseId = this.caseSelected.id;
+      this.configService.computer.cpuId = this.cpuSelected.id;
+      this.configService.computer.coolerId = this.selectedCoolerId;
+      this.configService.price = this.currentTotalPrice;
     }
   }
 
@@ -73,10 +86,18 @@ export class CoolerComponent implements OnInit {
         this.selectedCoolerId = this.configService.computer.coolerId;
       });
     console.log(this.configService.computer);
-     this.configService.cpus.getById(this.configService.computer.cpuId).subscribe(response => {
+
+    this.configService.cpus.getById(this.configService.computer.cpuId).subscribe(response => {
       this.cpuHasStockCooler = response.hasStockCooler;
       this.isDisabled = false;
     });
-  }
 
+    this.configService.cases.getById(this.configService.computer.caseId).subscribe(response => {
+      this.caseSelected = response;
+    });
+
+    this.configService.cpus.getById(this.configService.computer.cpuId).subscribe(response => {
+      this.cpuSelected = response;
+    });
+  }
 }

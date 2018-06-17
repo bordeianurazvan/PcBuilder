@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigComputerService } from '../../shared/services/config-computer.service';
 import { Case } from '../../shared/models/case';
+import { Computer } from '../../shared/models/Computer';
 
 @Component({
   selector: 'app-case',
@@ -31,7 +32,10 @@ export class CaseComponent implements OnInit {
       }
       this.selectedCaseId = $event;
       this.isDisabled = false;
+      this.currentTotalPrice = 0;
       this.currentTotalPrice = this.currentTotalPrice + this.getCaseById(this.selectedCaseId).price;
+      this.configService.computer = new Computer();
+      this.configService.computer.caseId = this.selectedCaseId;
     }
   }
 
@@ -51,7 +55,6 @@ export class CaseComponent implements OnInit {
   constructor(private router: Router, private configService: ConfigComputerService) {}
 
   ngOnInit() {
-    console.log(JSON.stringify(this.configService.computer));
     this.configService.cases.getAll(JSON.stringify(this.configService.computer)).subscribe(response => {
       this.cases = response;
       this.currentTotalPrice = this.configService.price;
@@ -64,5 +67,6 @@ export class CaseComponent implements OnInit {
       }
       this.selectedCaseId = this.configService.computer.caseId;
     });
+    console.log(this.configService.computer);
   }
 }

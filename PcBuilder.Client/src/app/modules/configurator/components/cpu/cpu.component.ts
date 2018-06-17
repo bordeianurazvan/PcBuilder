@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ConfigComputerService } from '../../shared/services/config-computer.service';
 import { Router } from '@angular/router';
 import { Cpu } from '../../shared/models/cpu';
+import { Computer } from '../../shared/models/Computer';
+import { Case } from '../../shared/models/case';
 
 @Component({
   selector: 'app-cpu',
@@ -13,6 +15,7 @@ export class CpuComponent implements OnInit {
   isDisabled = true;
   selectedCpuId: string;
   currentTotalPrice: number;
+  caseSelected: Case;
 
   cpuSelected($event) {
     if (this.selectedCpuId === $event) {
@@ -31,7 +34,12 @@ export class CpuComponent implements OnInit {
       }
       this.selectedCpuId = $event;
       this.isDisabled = false;
-      this.currentTotalPrice = this.currentTotalPrice + this.getCpuById(this.selectedCpuId).price;
+      this.currentTotalPrice = this.caseSelected.price + this.getCpuById(this.selectedCpuId).price;
+
+      this.configService.computer = new Computer();
+      this.configService.computer.caseId = this.caseSelected.id;
+      this.configService.computer.cpuId = this.selectedCpuId;
+      this.configService.price = this.currentTotalPrice;
     }
   }
 
@@ -42,8 +50,8 @@ export class CpuComponent implements OnInit {
 
   goToCpuCooler() {
     this.configService.computer.cpuId = this.selectedCpuId;
-    this.configService.price = this.currentTotalPrice;
     this.configService.progress = this.configService.progress + 14;
+    this.configService.price = this.currentTotalPrice;
     this.router.navigate(['configurator/cooler']);
   }
 
@@ -69,6 +77,10 @@ export class CpuComponent implements OnInit {
         }
         this.selectedCpuId = this.configService.computer.cpuId;
       });
+
+    this.configService.cases.getById(this.configService.computer.caseId).subscribe(response => {
+      this.caseSelected = response;
+    });
     console.log(this.configService.computer);
   }
 }
