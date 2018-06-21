@@ -1,21 +1,21 @@
 <div class="card" [ngClass]="{'selected': videocard.isSelected}">
   <div class="card_image">
-    <img src="../../../../../../assets/images/configurator/videocard/videocard.jpg">
+    <img [src]="videocard.imageUrl">
     <div class="info">
       <h2>Specifications:</h2>
       <ul>
         <li>
-          <strong>Socket:</strong>{{videocard.socket}}</li>
+          <strong>Type: </strong>{{videocard.type}}</li>
         <li>
-          <strong>Series: </strong>{{videocard.series}}</li>
+          <strong>Interface:</strong>{{videocard.interface}}</li>
         <li>
-          <strong>Zones: </strong>9 - 11</li>
+          <strong>Memory: </strong>{{videocard.memorySize}} Gb - {{videocard.memoryFrequency}} Mhz</li>
         <li>
-          <strong>Height: </strong>2 - 3 feet</li>
+          <strong>Memory BUS: </strong>{{videocard.memoryBus}}-bit</li>
         <li>
-          <strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall</li>
+          <strong>Gpu Frequency: </strong>{{videocard.baseFrequency}} MHz / {{videocard.gpuBoostClock}} MHz</li>
         <li>
-          <strong>Features: </strong>Tolerates heat</li>
+          <strong>Resolution: </strong>{{videocard.resolution}}</li>
       </ul>
     </div>
   </div>

@@ -20,11 +20,13 @@ import { RamCardComponent } from './shared/components/ram-card/ram-card.componen
 import { VideocardCardComponent } from './shared/components/videocard-card/videocard-card.component';
 import { StorageCardComponent } from './shared/components/storage-card/storage-card.component';
 import { PowersupplyCardComponent } from './shared/components/powersupply-card/powersupply-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
-    ConfiguratorRoutes
+    ConfiguratorRoutes,
+    HttpClientModule
   ],
   declarations: [
     ConfiguratorComponent,

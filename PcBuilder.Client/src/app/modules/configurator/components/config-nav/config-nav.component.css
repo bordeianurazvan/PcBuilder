@@ -22,7 +22,7 @@
   margin: auto;
 }
 li > a {
-  pointer-events: fill;
+  pointer-events: none;
 }
 
 a:hover{

@@ -1,21 +1,23 @@
 <div class="card" [ngClass]="{'selected': powersupply.isSelected}">
   <div class="card_image">
-    <img src="../../../../../../assets/images/configurator/powersupply/powersupply.jpg">
+    <img [src]="powersupply.imageUrl">
     <div class="info">
       <h2>Specifications:</h2>
       <ul>
         <li>
-          <strong>Socket:</strong>{{powersupply.socket}}</li>
+          <strong>Power:</strong>{{powersupply.power}}</li>
         <li>
-          <strong>Series: </strong>{{powersupply.series}}</li>
+          <strong>Efficiency: </strong>{{powersupply.efficiency}}</li>
         <li>
-          <strong>Zones: </strong>9 - 11</li>
+          <strong>Cooler: </strong>{{powersupply.cooler}}</li>
         <li>
-          <strong>Height: </strong>2 - 3 feet</li>
+          <strong>Pfc: </strong>{{powersupply.pfc}}</li>
         <li>
-          <strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall</li>
-        <li>
-          <strong>Features: </strong>Tolerates heat</li>
+          <strong>Certificate: </strong>{{powersupply.certificate}}</li>
+        <li *ngIf="powersupply.isModular">
+          <strong>Modular: </strong>Yes</li>
+        <li *ngIf="!powersupply.isModular">
+          <strong>Modular: </strong>No</li>
       </ul>
     </div>
   </div>

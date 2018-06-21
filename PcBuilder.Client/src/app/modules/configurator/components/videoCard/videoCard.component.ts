@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigComputerService } from '../../shared/services/config-computer.service';
 import { Router } from '@angular/router';
+import { VideoCard } from '../../shared/models/videoCard';
+import { Ram } from '../../shared/models/ram';
+import { Motherboard } from '../../shared/models/motherboard';
+import { Cooler } from '../../shared/models/cooler';
+import { Cpu } from '../../shared/models/cpu';
+import { Case } from '../../shared/models/case';
+import { Computer } from '../../shared/models/Computer';
 
 @Component({
   selector: 'app-videocard',
@@ -8,10 +15,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./videoCard.component.css']
 })
 export class VideoCardComponent implements OnInit {
-  videocards: any[];
+  ramSelected: Ram;
+  motherboardSelected: Motherboard;
+  coolerSelected: Cooler;
+  cpuSelected: Cpu;
+  caseSelected: Case;
+  videocards: VideoCard[];
   isDisabled = true;
-  selectedvideocardId: number;
-  indexOfVideocardAlreadySelected: any;
+  selectedvideocardId: string;
   currentTotalPrice: number;
 
   videocardSelected($event) {
@@ -23,17 +34,38 @@ export class VideoCardComponent implements OnInit {
       for (let i = 0; i < this.videocards.length; i++) {
         if ($event !== this.videocards[i].id) {
           if (this.videocards[i].isSelected) {
-            this.currentTotalPrice = this.currentTotalPrice - this.getVideocardById(this.videocards[i].id).price;
+            this.currentTotalPrice =
+              this.currentTotalPrice - this.getVideocardById(this.videocards[i].id).price;
           }
           this.videocards[i].isSelected = false;
         }
       }
       this.selectedvideocardId = $event;
       this.isDisabled = false;
-      this.currentTotalPrice = this.currentTotalPrice + this.getVideocardById(this.selectedvideocardId).price;
+      this.currentTotalPrice =
+        this.caseSelected.price +
+        this.cpuSelected.price +
+        this.motherboardSelected.price +
+        this.ramSelected.price +
+        this.getVideocardById(this.selectedvideocardId).price;
+      if (this.coolerSelected != null) {
+        this.currentTotalPrice = this.currentTotalPrice + this.coolerSelected.price;
+      }
+
+      this.configService.computer = new Computer();
+      this.configService.computer.caseId = this.caseSelected.id;
+      this.configService.computer.cpuId = this.cpuSelected.id;
+
+      if (this.coolerSelected != null) {
+        this.configService.computer.coolerId = this.coolerSelected.id;
+      }
+
+      this.configService.computer.motherboardId = this.motherboardSelected.id;
+      this.configService.computer.ramId = this.ramSelected.id;
+      this.configService.computer.videocardId = this.selectedvideocardId;
+      this.configService.price = this.currentTotalPrice;
     }
   }
-
 
   goToRam() {
     this.configService.progress = this.configService.progress - 13;
@@ -47,64 +79,54 @@ export class VideoCardComponent implements OnInit {
     this.router.navigate(['configurator/storage']);
   }
 
-  getVideocardById(id: number) {
+  getVideocardById(id: string) {
     if (id !== undefined) {
       return this.videocards.find(c => c.id === id);
     }
   }
 
-  constructor(private router: Router, private configService: ConfigComputerService) { }
+  constructor(private router: Router, private configService: ConfigComputerService) {}
 
   ngOnInit() {
-    this.currentTotalPrice = this.configService.price;
-    this.videocards = [
-      {
-        id: 1,
-        title: 'Sapphire Radeon RX 580 PULSE 8GB DDR5 256-bit',
-        price: 99,
-        socket: '1151 v2',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 2,
-        title: 'GIGABYTE Radeon RX Vega56 8G HBM2 GAMING OC',
-        price: 100,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      },
-      {
-        id: 3,
-        title: 'Inno3D GeForce GTX 1060 Twin X2 3GB DDR5 192-bit',
-        price: 100,
-        socket: '1151',
-        motherboards: ['ATX', 'MTX'],
-        fans: '2/6',
-        slots: 7,
-        cpuCoolerHeight: 180,
-        videoCardWidth: 200,
-        isSelected: false
-      }
-    ];
-    if (this.configService.computer.videocardId !== undefined) {
-      this.indexOfVideocardAlreadySelected = this.videocards.find(
-        c => c.id === this.configService.computer.videocardId
-      ).isSelected = true;
-      if (this.indexOfVideocardAlreadySelected !== undefined) {
-        this.isDisabled = false;
-      }
-      this.selectedvideocardId = this.configService.computer.videocardId;
-    }
+    this.configService.videocards
+      .getAll(JSON.stringify(this.configService.computer))
+      .subscribe(response => {
+        this.videocards = response;
+        this.currentTotalPrice = this.configService.price;
+        if (this.configService.computer.videocardId !== '') {
+          this.videocards.find(
+            c => c.id === this.getVideocardById(this.configService.computer.videocardId).id
+          ).isSelected = true;
+          this.isDisabled = false;
+        }
+        this.selectedvideocardId = this.configService.computer.videocardId;
+      });
     console.log(this.configService.computer);
-  }
 
+    this.configService.cases.getById(this.configService.computer.caseId).subscribe(response => {
+      this.caseSelected = response;
+    });
+
+    this.configService.cpus.getById(this.configService.computer.cpuId).subscribe(response => {
+      this.cpuSelected = response;
+    });
+
+    if (this.configService.computer.coolerId !== '') {
+      this.configService.coolers
+        .getById(this.configService.computer.coolerId)
+        .subscribe(response => {
+          this.coolerSelected = response;
+        });
+    }
+
+    this.configService.motherboards
+      .getById(this.configService.computer.motherboardId)
+      .subscribe(response => {
+        this.motherboardSelected = response;
+      });
+
+    this.configService.rams.getById(this.configService.computer.ramId).subscribe(response => {
+      this.ramSelected = response;
+    });
+  }
 }

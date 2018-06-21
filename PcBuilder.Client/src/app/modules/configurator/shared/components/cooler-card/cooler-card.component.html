@@ -1,21 +1,23 @@
 <div class="card" [ngClass]="{'selected': cooler.isSelected}">
   <div class="card_image">
-    <img src="../../../../../../assets/images/configurator/cooler/noctuaNhD14.jpg">
+    <img [src]="cooler.imageUrl">
     <div class="info">
       <h2>Specifications:</h2>
       <ul>
         <li>
-          <strong>Socket:</strong>{{cooler.socket}}</li>
+          <strong>Sockets: </strong>
+          <span *ngFor="let socket of cooler._compatibleSockets"> {{socket}} </span>
+        </li>
         <li>
-          <strong>Series: </strong>{{cooler.series}}</li>
+          <strong>Type: </strong>{{cooler.type}}</li>
         <li>
-          <strong>Zones: </strong>9 - 11</li>
+          <strong>Fans: </strong>{{cooler.fans}} x {{cooler.fanSize}} mm</li>
         <li>
-          <strong>Height: </strong>2 - 3 feet</li>
+          <strong>Fans-speed: </strong>{{cooler.fanSpeed}}</li>
         <li>
-          <strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall</li>
+          <strong>Noise: </strong>{{cooler.noise}}</li>
         <li>
-          <strong>Features: </strong>Tolerates heat</li>
+          <strong>Height: </strong>{{cooler.height}} mm</li>
       </ul>
     </div>
   </div>

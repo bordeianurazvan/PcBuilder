@@ -1,21 +1,19 @@
 <div class="card" [ngClass]="{'selected': ram.isSelected}">
   <div class="card_image">
-    <img src="../../../../../../assets/images/configurator/ram/ram.jpg">
+    <img [src]="ram.imageUrl">
     <div class="info">
       <h2>Specifications:</h2>
       <ul>
         <li>
-          <strong>Socket:</strong>{{ram.socket}}</li>
+          <strong>Type: </strong>{{ram.type}}</li>
         <li>
-          <strong>Series: </strong>{{ram.series}}</li>
+          <strong>Capacity:</strong>{{ram.capacity}} Gb</li>
         <li>
-          <strong>Zones: </strong>9 - 11</li>
+          <strong>Frequency: </strong>{{ram.frequency}} Ghz</li>
         <li>
-          <strong>Height: </strong>2 - 3 feet</li>
+          <strong>Latency: </strong>{{ram.latency}}</li>
         <li>
-          <strong>Blooms in: </strong>Mid‑Summer - Mid‑Fall</li>
-        <li>
-          <strong>Features: </strong>Tolerates heat</li>
+          <strong>Standard: </strong>{{ram.standard}}</li>
       </ul>
     </div>
   </div>
