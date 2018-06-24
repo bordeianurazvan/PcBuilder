@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
 import { RouterModule } from '@angular/router';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
+import { CommunityComponent } from './components/community/community.component';
 
 @NgModule({
   imports: [
@@ -10,6 +11,6 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
     RouterModule
   ],
   exports: [],
-  declarations:  [HomeComponent, TutorialComponent]
+  declarations:  [HomeComponent, TutorialComponent, CommunityComponent]
 })
 export class CoreModule { }

@@ -21,6 +21,7 @@ import { VideocardCardComponent } from './shared/components/videocard-card/video
 import { StorageCardComponent } from './shared/components/storage-card/storage-card.component';
 import { PowersupplyCardComponent } from './shared/components/powersupply-card/powersupply-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     RamCardComponent,
     VideocardCardComponent,
     StorageCardComponent,
-    PowersupplyCardComponent
+    PowersupplyCardComponent,
+    ResultComponent
   ],
   providers: [ConfigComputerService]
 })
