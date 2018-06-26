@@ -8,6 +8,7 @@ import { RamComponent } from './components/ram/ram.component';
 import { VideoCardComponent } from './components/videoCard/videoCard.component';
 import { StorageComponent } from './components/storage/storage.component';
 import { PowerSupplyComponent } from './components/powerSupply/powerSupply.component';
+import { ResultComponent } from './components/result/result.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: 'ram', component: RamComponent },
       { path: 'videocard', component: VideoCardComponent },
       { path: 'storage', component: StorageComponent },
-      { path: 'powersupply', component: PowerSupplyComponent }
+      { path: 'powersupply', component: PowerSupplyComponent },
+      { path: 'result', component: ResultComponent}
     ]
   }
 ];

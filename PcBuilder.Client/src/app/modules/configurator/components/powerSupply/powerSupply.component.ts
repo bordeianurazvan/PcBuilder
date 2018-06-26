@@ -82,7 +82,7 @@ export class PowerSupplyComponent implements OnInit {
   goToResult() {
     this.configService.computer.powersupplyId = this.selectedPowersupplyId;
     this.configService.price = this.currentTotalPrice;
-    this.router.navigate(['']);
+    this.router.navigate(['/configurator/result']);
   }
 
   getPowersupplyById(id: string) {
