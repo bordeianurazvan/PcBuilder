@@ -7,11 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./configurator.component.css']
 })
 export class ConfiguratorComponent implements OnInit {
+  currentRoute: Router;
   exitConfig() {
     console.log('button pressed');
       this.router.navigate(['/']);
   }
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.currentRoute = this.router;
+  }
 
   ngOnInit() {}
 }

@@ -1,7 +1,28 @@
 <div class="container-fluid">
-  <h3>Your configuration:</h3>
-  <div class="row">
-    <app-case-card [case]="case"></app-case-card>
-  </div>  
+  <h3 style="text-align: center">Your selected configuration:</h3>
+  <div class="row col-md-10 col-md-offset-1">
+<!-- 
+    <app-cpu-card [cpu]="cpu"></app-cpu-card>
+    <app-cooler-card *ngIf="cpu != null" [cooler]="cooler"></app-cooler-card>
+    <app-motherboard-card [motherboard]="motherboard"></app-motherboard-card>
+    <app-ram-card [ram]="ram"></app-ram-card>
+    <app-videocard-card [videocard]="videocard"></app-videocard-card>
+    <app-storage-card [storage]="storage"></app-storage-card>
+    <app-powersupply-card [powersupply]="powersupply"></app-powersupply-card> -->
+    <table>
+      <tbody>
+        <tr>
+          <td>
+              <app-case-card [case]="case"></app-case-card>
+          </td>
+        </tr>
+        <tr>
+            <td>
+                <app-case-card [case]="case"></app-case-card>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
 
 </div>
