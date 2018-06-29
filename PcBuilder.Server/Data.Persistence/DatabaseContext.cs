@@ -19,6 +19,7 @@ namespace Data.Persistence
         public DbSet<VideoCard> VideoCards { get; set; }
         public DbSet<Storage> Storages { get; set; }
         public DbSet<PowerSupply> PowerSupplies { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

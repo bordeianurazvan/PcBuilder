@@ -22,6 +22,7 @@ import { StorageCardComponent } from './shared/components/storage-card/storage-c
 import { PowersupplyCardComponent } from './shared/components/powersupply-card/powersupply-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultComponent } from './components/result/result.component';
+import { CommunityService } from '../core/shared/services/community.service';
 
 @NgModule({
   imports: [
@@ -50,6 +51,6 @@ import { ResultComponent } from './components/result/result.component';
     PowersupplyCardComponent,
     ResultComponent
   ],
-  providers: [ConfigComputerService]
+  providers: [ConfigComputerService, CommunityService]
 })
 export class ConfiguratorModule { }

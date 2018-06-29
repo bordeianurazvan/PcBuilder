@@ -7,9 +7,9 @@
 <div class="container">
   <section id="cart"> 
     <article class="product">
-      <header>
-        <a class="remove">
-          <img [src]="case.imageUrl" alt="">
+      <header *ngIf="case">
+        <a class="remove" >
+          <img [src]="case.imageUrl" alt="" *ngIf="case.imageUrl">
         </a>
       </header>
 
@@ -33,9 +33,9 @@
     </article>
 
     <article class="product">
-      <header>
+      <header *ngIf="cpu">
         <a class="remove">
-          <img [src]="cpu.imageUrl" alt="">
+          <img [src]="cpu.imageUrl" alt="" *ngIf="cpu.imageUrl">
         </a>
       </header>
 
@@ -60,9 +60,9 @@
     </article>
 
     <article class="product" *ngIf="cooler.title != null">
-      <header>
+      <header *ngIf="cooler">
         <a class="remove">
-          <img [src]="cooler.imageUrl" alt="">
+          <img [src]="cooler.imageUrl" alt="" *ngIf="cooler.imageUrl">
         </a>
       </header>
 
@@ -87,9 +87,9 @@
     </article>
 
     <article class="product">
-      <header>
+      <header *ngIf="motherboard">
         <a class="remove">
-          <img [src]="motherboard.imageUrl" alt="">
+          <img [src]="motherboard.imageUrl" alt="" *ngIf="motherboard.imageUrl">
         </a>
       </header>
 
@@ -114,9 +114,9 @@
     </article>
 
     <article class="product">
-      <header>
+      <header *ngIf="ram">
         <a class="remove">
-          <img [src]="ram.imageUrl" alt="">
+          <img [src]="ram.imageUrl" alt="" *ngIf="ram.imageUrl">
         </a>
       </header>
 
@@ -140,9 +140,9 @@
     </article>
 
     <article class="product">
-      <header>
+      <header *ngIf="videocard">
         <a class="remove">
-          <img [src]="videocard.imageUrl" alt="">
+          <img [src]="videocard.imageUrl" alt="" *ngIf="videocard.imageUrl">
         </a>
       </header>
 
@@ -166,9 +166,9 @@
     </article>
 
     <article class="product">
-      <header>
+      <header *ngIf="storage">
         <a class="remove">
-          <img [src]="storage.imageUrl" alt="">
+          <img [src]="storage.imageUrl" alt="" *ngIf="storage.imageUrl">
         </a>
       </header>
 
@@ -193,9 +193,9 @@
 
     
     <article class="product">
-      <header>
+      <header *ngIf="powersupply">
         <a class="remove">
-          <img [src]="powersupply.imageUrl" alt="">
+          <img [src]="powersupply.imageUrl" alt="" *ngIf="powersupply.imageUrl">
         </a>
       </header>
 
@@ -233,7 +233,7 @@
 
     <div class="right">
       <h1 class="total">Total: <span>{{totalPrice | number : '1.2-2'}}</span>$</h1>
-      <a class="btn" style="color:white">Share</a>
+      <a class="btn" style="color:white" (click)="share()">Share</a>
     </div>
 
   </div>

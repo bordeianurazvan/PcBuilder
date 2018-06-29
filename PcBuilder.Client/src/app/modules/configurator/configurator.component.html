@@ -1,5 +1,5 @@
 <div>
-    <app-config-nav *ngIf="currentRoute.url !== '/configurator/result'"></app-config-nav>
+    <app-config-nav *ngIf="!currentRoute.url.startsWith('/configurator/result')"></app-config-nav>
     <!-- Content Area -->
     <div class="tab-content">
         <router-outlet></router-outlet>

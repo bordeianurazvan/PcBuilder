@@ -185,6 +185,42 @@ namespace Data.Persistence.Migrations
                     b.ToTable("Motherboards");
                 });
 
+            modelBuilder.Entity("Data.Core.Domain.Post", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("CaseId");
+
+                    b.Property<Guid?>("CoolerId");
+
+                    b.Property<Guid>("CpuId");
+
+                    b.Property<DateTime>("CreationDate");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Image");
+
+                    b.Property<Guid>("MotherboardId");
+
+                    b.Property<Guid>("PowerSupplyId");
+
+                    b.Property<double>("Price");
+
+                    b.Property<Guid>("RamId");
+
+                    b.Property<Guid>("StorageId");
+
+                    b.Property<string>("Title");
+
+                    b.Property<Guid>("VideoCardId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Posts");
+                });
+
             modelBuilder.Entity("Data.Core.Domain.PowerSupply", b =>
                 {
                     b.Property<Guid>("Id")

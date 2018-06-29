@@ -43,6 +43,7 @@ namespace PcBuilder.Server
             services.AddScoped<IVideoCardRepository, VideoCardRepository>();
             services.AddScoped<IStorageRepository, StorageRepository>();
             services.AddScoped<IPowerSupplyRepository, PowerSupplyRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
 
         }
 

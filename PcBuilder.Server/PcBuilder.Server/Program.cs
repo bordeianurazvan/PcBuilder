@@ -11,6 +11,8 @@ namespace PcBuilder.Server
     {
         public static void Main(string[] args)
         {
+            //CreateWebHostBuilder(args).Build().Run();
+
             var host = CreateWebHostBuilder(args);
             using (var scope = host.Services.CreateScope())
             {
@@ -34,5 +36,9 @@ namespace PcBuilder.Server
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
+
+        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        //    WebHost.CreateDefaultBuilder(args)
+        //        .UseStartup<Startup>();
     }
 }
