@@ -4,7 +4,9 @@
 *::after {
   box-sizing: border-box;
 }
-
+a{
+  text-decoration: none;
+}
 h2{
   text-align: center;
   padding-top:10px;

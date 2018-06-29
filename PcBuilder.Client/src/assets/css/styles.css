@@ -1029,8 +1029,9 @@ Nav Overlay
     transition: all 300ms ease-in-out;
 }
 .overlay ul li a:hover, .overlay ul li a:focus {
-    border-color: black;
+    /* border-color: black; */
     color: white;
+    background-color: firebrick;
    
 }
 
