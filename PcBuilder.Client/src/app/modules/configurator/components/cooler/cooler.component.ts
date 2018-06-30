@@ -5,6 +5,7 @@ import { Cooler } from '../../shared/models/cooler';
 import { Computer } from '../../shared/models/Computer';
 import { Case } from '../../shared/models/case';
 import { Cpu } from '../../shared/models/cpu';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-cooler',
@@ -68,6 +69,10 @@ export class CoolerComponent implements OnInit {
     }
   }
 
+  takeAnotherCooler() {
+    this.isDisabled = !this.isDisabled;
+  }
+
   constructor(private router: Router, private configService: ConfigComputerService) {}
 
   ngOnInit() {
@@ -89,6 +94,9 @@ export class CoolerComponent implements OnInit {
 
     this.configService.cpus.getById(this.configService.computer.cpuId).subscribe(response => {
       this.cpuHasStockCooler = response.hasStockCooler;
+      if (response.hasStockCooler) {
+        document.getElementById('openModalButton').click();
+      }
       this.isDisabled = false;
     });
 

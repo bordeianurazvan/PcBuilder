@@ -1,7 +1,6 @@
 <div class="container-fluid">
   <h3 *ngIf="coolers && coolers.length != 0">Please select a product:</h3>
   <h3 *ngIf="!coolers || coolers.length == 0">There are no coolers compatible with selected CPU :(</h3>
-  <h3 *ngIf="cpuHasStockCooler">Selected Cpu has already a stock cooler, so you can skip this step</h3>
   <div class="col-sm-12">
     <ul class="cards" >
       
@@ -24,3 +23,26 @@
     </div>
 </div>
 
+<div class="modal fade" id="coolerModal" tabindex="-1" role="dialog" aria-labelledby="coolerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="coolerModal">Decide your future cooler:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-12 content">
+          <p>Selected Cpu has already a stock cooler, so you can skip this step</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" (click)="goToMotherboard()" data-dismiss="modal">Next ></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="takeAnotherCooler()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#coolerModal">Open Modal</button>
