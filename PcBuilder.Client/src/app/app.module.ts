@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { NotFoundModule } from './modules/not-found/not-found.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './modules/core/core.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { CoreModule } from './modules/core/core.module';
 ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     CoreModule,
     NotFoundModule

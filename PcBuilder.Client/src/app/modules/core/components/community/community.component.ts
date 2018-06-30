@@ -9,21 +9,23 @@ import { Post } from '../../shared/models/post';
   styleUrls: ['./community.component.css']
 })
 export class CommunityComponent implements OnInit {
-  posts: any[];
+  posts: Post[];
+  exist = false;
 
   constructor(private router: Router, private communityService: CommunityService) {}
 
   goToDetails(post: Post) {
     const postId = post ? post.id : null;
-    // this.communityService.post = post;
     this.router.navigate(['community/' + postId]);
   }
-
 
   ngOnInit() {
     this.communityService.posts.getAll().subscribe(
       response => {
         this.posts = response;
+        if (this.posts.length !== 0) {
+          this.exist = true;
+        }
       },
       error => {
         console.log('error');

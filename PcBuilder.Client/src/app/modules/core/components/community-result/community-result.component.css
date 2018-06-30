@@ -89,7 +89,8 @@ a:hover {
 }
 
 #cart a:hover {
-	color: #000;
+	color: white;
+
 }
 
 .product.removed {
@@ -226,6 +227,10 @@ a:hover {
   text-align: center;
   background: #007bff;
 }
+.qt:hover{
+	background: #0152a8;
+	cursor: pointer;
+}
 
 .qt-plus, .qt-minus {
 	background: #fcfcfc;
@@ -242,7 +247,7 @@ a:hover {
 }
 
 .qt-plus:hover, .qt-minus:hover {
-	background: #53b5aa;
+	background: #0152a8;
 	color: #fff;
 	cursor: pointer;
 }
@@ -356,4 +361,14 @@ a:hover {
 
 .added {
 	margin: 0 -50px 0 0 !important;
+}
+
+.buy-btn{
+	font-size: 19px;
+    line-height: 46px;
+    width: 70px;
+    text-align: center;
+	background: #007bff;
+	color: white;
+	border: 1px solid transparent;
 }

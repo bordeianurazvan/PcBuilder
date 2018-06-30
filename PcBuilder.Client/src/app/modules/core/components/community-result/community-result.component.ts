@@ -17,7 +17,6 @@ import { Post } from '../../shared/models/post';
   templateUrl: './community-result.component.html',
   styleUrls: ['./community-result.component.css']
 })
-
 export class CommunityResultComponent implements OnInit {
   case: Case = new Case();
   cpu: Cpu = new Cpu();
@@ -31,7 +30,12 @@ export class CommunityResultComponent implements OnInit {
   post: Post;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private communityService: CommunityService, private route: ActivatedRoute, private configService: ConfigComputerService) {
+  constructor(
+    private router: Router,
+    private communityService: CommunityService,
+    private route: ActivatedRoute,
+    private configService: ConfigComputerService
+  ) {
     this.case.isSelected = false;
     this.cpu.isSelected = false;
     this.cooler.isSelected = false;
@@ -40,118 +44,61 @@ export class CommunityResultComponent implements OnInit {
     this.videocard.isSelected = false;
     this.powersupply.isSelected = false;
     this.storage.isSelected = false;
-
+  }
+  back() {
+    this.router.navigate(['community']);
+  }
+  buy(product: any) {
+    console.log(product);
+    window.open(product.url);
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.communityService.posts.getById(params['id']).subscribe(response => {
-          this.post = response;
-          this.totalPrice = this.post.price;
+        this.post = response;
+        this.totalPrice = this.post.price;
+        this.post.title = response.title;
+        this.post.description = response.description;
 
-          this.configService.cases.getById(response.caseId).subscribe(responseCase => {
-            this.case = responseCase;
+        this.configService.cases.getById(response.caseId).subscribe(responseCase => {
+          this.case = responseCase;
+        });
+
+        this.configService.cpus.getById(response.cpuId).subscribe(responseCpu => {
+          this.cpu = responseCpu;
+        });
+
+        if (response.coolerId !== '' && response.coolerId != null) {
+          this.configService.coolers.getById(response.coolerId).subscribe(responseCooler => {
+            this.cooler = responseCooler;
           });
+        }
 
-          this.configService.cpus.getById(response.cpuId).subscribe(responseCpu => {
-            this.cpu = responseCpu;
-          });
-
-          if (response.coolerId !== '' && response.coolerId != null) {
-            this.configService.coolers.getById(response.coolerId).subscribe(responseCooler => {
-              this.cooler = responseCooler;
-            });
-          }
-
-          this.configService.motherboards.getById(response.motherboardId).subscribe(responseMotherboard => {
+        this.configService.motherboards
+          .getById(response.motherboardId)
+          .subscribe(responseMotherboard => {
             this.motherboard = responseMotherboard;
           });
 
-          this.configService.rams.getById(response.ramId).subscribe(reponseRam => {
-            this.ram = reponseRam;
-          });
+        this.configService.rams.getById(response.ramId).subscribe(reponseRam => {
+          this.ram = reponseRam;
+        });
 
-          this.configService.videocards.getById(response.videoCardId).subscribe(responseVideocard => {
-            this.videocard = responseVideocard;
-          });
+        this.configService.videocards.getById(response.videoCardId).subscribe(responseVideocard => {
+          this.videocard = responseVideocard;
+        });
 
-          this.configService.storages.getById(response.storageId).subscribe(responseStorage => {
-            this.storage = responseStorage;
-          });
+        this.configService.storages.getById(response.storageId).subscribe(responseStorage => {
+          this.storage = responseStorage;
+        });
 
-          this.configService.powersupplies.getById(response.powerSupplyId).subscribe(responsePowersupply => {
+        this.configService.powersupplies
+          .getById(response.powerSupplyId)
+          .subscribe(responsePowersupply => {
             this.powersupply = responsePowersupply;
           });
-
       });
-
-
-  });
-  //   if (this.configService.computer.caseId != null) {
-  //     this.configService.cases.getById(this.configService.computer.caseId).subscribe(response => {
-  //       this.case = response;
-  //       console.log(this.case);
-  //     });
-  //   }
-
-  //   if (this.configService.computer.cpuId != null) {
-  //     this.configService.cpus.getById(this.configService.computer.cpuId).subscribe(response => {
-  //       this.cpu = response;
-  //       console.log(response);
-  //     });
-  //   }
-
-  //   if (this.configService.computer.coolerId != null) {
-  //     this.configService.coolers
-  //       .getById(this.configService.computer.coolerId)
-  //       .subscribe(response => {
-  //         this.cooler = response;
-  //         console.log(response);
-  //       });
-  //   }
-
-  //   if (this.configService.computer.motherboardId != null) {
-  //     this.configService.motherboards
-  //       .getById(this.configService.computer.motherboardId)
-  //       .subscribe(response => {
-  //         this.motherboard = response;
-  //         console.log(response);
-  //       });
-  //   }
-
-  //   if (this.configService.computer.ramId != null) {
-  //     this.configService.rams.getById(this.configService.computer.ramId).subscribe(response => {
-  //       this.ram = response;
-  //       console.log(response);
-  //     });
-  //   }
-
-  //   if (this.configService.computer.storageId != null) {
-  //     this.configService.storages
-  //       .getById(this.configService.computer.storageId)
-  //       .subscribe(response => {
-  //         this.storage = response;
-  //         console.log(response);
-  //       });
-  //   }
-
-  //   if (this.configService.computer.videocardId != null) {
-  //     this.configService.videocards
-  //       .getById(this.configService.computer.videocardId)
-  //       .subscribe(response => {
-  //         this.videocard = response;
-  //         console.log(response);
-  //       });
-  //   }
-
-  //   if (this.configService.computer.powersupplyId != null) {
-  //     this.configService.powersupplies
-  //       .getById(this.configService.computer.powersupplyId)
-  //       .subscribe(response => {
-  //         this.powersupply = response;
-  //         console.log(response);
-  //       });
-  //   }
-  //   this.totalPrice = this.configService.price;
-  // }
+    });
+  }
 }

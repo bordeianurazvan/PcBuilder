@@ -1,15 +1,16 @@
 <header id="site-header">
-    <div class="container">
-      <h1>Your configuration:</h1>
+    <div class="container" *ngIf="post">
+      <h1 *ngIf="post.title">{{post.title}}</h1>
+      <p *ngIf="post.description">{{post.description}}</p>
     </div>
   </header>
   
   <div class="container">
     <section id="cart"> 
       <article class="product">
-        <header>
+        <header *ngIf="case">
           <a class="remove">
-            <img [src]="case.imageUrl" alt="">
+            <img [src]="case.imageUrl" alt="" *ngIf="case.imageUrl">
           </a>
         </header>
   
@@ -24,8 +25,8 @@
         </div>
   
         <footer class="content">
-          <span class="qt"><a href="/configurator/case">Buy</a></span>
-  
+          <!-- <span class="qt"><a  (click)="buy(case)">Buy</a></span> -->
+          <button class="buy-btn" (click)="buy(case)">Buy</button>
           <h2 class="full-price">
             {{case.price}}$
           </h2>
@@ -33,9 +34,9 @@
       </article>
   
       <article class="product">
-        <header>
+        <header *ngIf="cpu">
           <a class="remove">
-            <img [src]="cpu.imageUrl" alt="">
+            <img [src]="cpu.imageUrl" alt="" *ngIf="cpu.imageUrl">
           </a>
         </header>
   
@@ -51,7 +52,7 @@
         </div>
   
         <footer class="content">
-          <span class="qt"><a href="/configurator/case">Buy</a></span>
+          <button class="buy-btn" (click)="buy(cpu)">Buy</button>
   
           <h2 class="full-price">
             {{cpu.price}}$
@@ -60,9 +61,9 @@
       </article>
   
       <article class="product" *ngIf="cooler.title != null">
-        <header>
+        <header *ngIf="cooler">
           <a class="remove">
-            <img [src]="cooler.imageUrl" alt="">
+            <img [src]="cooler.imageUrl" alt="" *ngIf="cooler.imageUrl">
           </a>
         </header>
   
@@ -78,7 +79,7 @@
         </div>
   
         <footer class="content">
-          <span class="qt"><a href="/configurator/case">Buy</a></span>
+          <button class="buy-btn" (click)="buy(cooler)">Buy</button>
   
           <h2 class="full-price">
             {{cooler.price}}$
@@ -87,9 +88,9 @@
       </article>
   
       <article class="product">
-        <header>
+        <header *ngIf="motherboard">
           <a class="remove">
-            <img [src]="motherboard.imageUrl" alt="">
+            <img [src]="motherboard.imageUrl" alt="" *ngIf="motherboard.imageUrl">
           </a>
         </header>
   
@@ -105,7 +106,7 @@
         </div>
   
         <footer class="content">
-          <span class="qt"><a href="/configurator/case">Buy</a></span>
+          <button class="buy-btn" (click)="buy(motherboard)">Buy</button>
   
           <h2 class="full-price">
             {{motherboard.price}}$
@@ -114,9 +115,9 @@
       </article>
   
       <article class="product">
-        <header>
+        <header *ngIf="ram">
           <a class="remove">
-            <img [src]="ram.imageUrl" alt="">
+            <img [src]="ram.imageUrl" alt="" *ngIf="ram.imageUrl">
           </a>
         </header>
   
@@ -131,7 +132,7 @@
         </div>
   
         <footer class="content">
-          <span class="qt"><a href="/configurator/case">Buy</a></span>
+          <button class="buy-btn" (click)="buy(ram)">Buy</button>
   
           <h2 class="full-price">
             {{ram.price}}$
@@ -140,9 +141,9 @@
       </article>
   
       <article class="product">
-        <header>
+        <header *ngIf="videocard">
           <a class="remove">
-            <img [src]="videocard.imageUrl" alt="">
+            <img [src]="videocard.imageUrl" alt="" *ngIf="videocard.imageUrl">
           </a>
         </header>
   
@@ -157,7 +158,7 @@
         </div>
   
         <footer class="content">
-          <span class="qt"><a href="/configurator/case">Buy</a></span>
+          <button class="buy-btn" (click)="buy(videocard)">Buy</button>
   
           <h2 class="full-price">
             {{videocard.price}}$
@@ -166,9 +167,9 @@
       </article>
   
       <article class="product">
-        <header>
+        <header *ngIf="storage">
           <a class="remove">
-            <img [src]="storage.imageUrl" alt="">
+            <img [src]="storage.imageUrl" alt="" *ngIf="storage.imageUrl">
           </a>
         </header>
   
@@ -183,7 +184,7 @@
         </div>
   
         <footer class="content">
-          <span class="qt"><a href="/configurator/case">Buy</a></span>
+          <button class="buy-btn" (click)="buy(storage)">Buy</button>
   
           <h2 class="full-price">
             {{storage.price}}$
@@ -193,9 +194,9 @@
   
       
       <article class="product">
-        <header>
+        <header *ngIf="powersupply">
           <a class="remove">
-            <img [src]="powersupply.imageUrl" alt="">
+            <img [src]="powersupply.imageUrl" alt="" *ngIf="powersupply.imageUrl">
           </a>
         </header>
   
@@ -210,7 +211,7 @@
         </div>
   
         <footer class="content">
-          <span class="qt"><a href="/configurator/case">Buy</a></span>
+          <button class="buy-btn" (click)="buy(powersupply)">Buy</button>
   
           <h2 class="full-price">
             {{powersupply.price}}$
@@ -225,14 +226,11 @@
   <footer id="site-footer">
     <div class="container clearfix">
   
-      <div class="left">
-        <!-- <h2 class="subtotal">Subtotal: <span>163.96</span>€</h2>
-        <h3 class="tax">Taxes (5%): <span>8.2</span>€</h3>
-        <h3 class="shipping">Shipping: <span>5.00</span>€</h3> -->
-      </div>
+      <div class="left"></div>
   
       <div class="right">
         <h1 class="total">Total: <span>{{totalPrice | number : '1.2-2'}}</span>$</h1>
+        <a class="btn" style="color:white" (click)="back()">Back to community</a>
       </div>
   
     </div>

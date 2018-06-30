@@ -35,6 +35,7 @@ namespace PcBuilder.Server.Controllers
         [HttpPost]
         public async Task<Post> Insert([FromBody] Post post)
         {
+            post.CreationDate = DateTime.Today;
             return await _repo.InsertAsync(post);
         }
 

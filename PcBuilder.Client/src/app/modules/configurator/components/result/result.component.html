@@ -5,10 +5,10 @@
 </header>
 
 <div class="container">
-  <section id="cart"> 
+  <section id="cart">
     <article class="product">
       <header *ngIf="case">
-        <a class="remove" >
+        <a class="remove">
           <img [src]="case.imageUrl" alt="" *ngIf="case.imageUrl">
         </a>
       </header>
@@ -16,16 +16,17 @@
       <div class="content">
 
         <h1>{{case.title}}</h1>
-           Type: {{case.type}} <br>
-           Motherboards: <span *ngFor="let motherboard of case._motherboardFormFactor"> {{motherboard}} </span><br>
-           Storage slots: {{case.numberOfSlots}}<br>
+        Type: {{case.type}}
+        <br> Motherboards:
+        <span *ngFor="let motherboard of case._motherboardFormFactor"> {{motherboard}} </span>
+        <br> Storage slots: {{case.numberOfSlots}}
+        <br>
 
         <!-- <div style="top: 0" class="color yellow"></div> -->
       </div>
 
       <footer class="content">
-        <span class="qt"><a href="/configurator/case">Buy</a></span>
-
+        <button class="buy-btn" (click)="buy(case)">Buy</button>
         <h2 class="full-price">
           {{case.price}}$
         </h2>
@@ -42,17 +43,17 @@
       <div class="content">
 
         <h1>{{cpu.title}}</h1>
-          Socket: {{cpu.socket}}<br>
-          Core/Threads: {{cpu.cores}} cores/ {{cpu.threads}} threads <br>
-          Frequencies: {{cpu.baseFrequency}} Ghz - {{cpu.turboFrequency}} Ghz<br>
+        Socket: {{cpu.socket}}
+        <br> Core/Threads: {{cpu.cores}} cores/ {{cpu.threads}} threads
+        <br> Frequencies: {{cpu.baseFrequency}} Ghz - {{cpu.turboFrequency}} Ghz
+        <br>
 
 
         <!-- <div style="top: 0" class="color yellow"></div> -->
       </div>
 
       <footer class="content">
-        <span class="qt"><a href="/configurator/case">Buy</a></span>
-
+        <button class="buy-btn" (click)="buy(cpu)">Buy</button>
         <h2 class="full-price">
           {{cpu.price}}$
         </h2>
@@ -69,17 +70,17 @@
       <div class="content">
 
         <h1>{{cooler.title}}</h1>
-          Type: {{cooler.type}}<br>
-          Fans: {{cooler.fans}} - {{cooler.fanSize}} mm <br>
-          Noise: {{cooler.noise}}<br>
+        Type: {{cooler.type}}
+        <br> Fans: {{cooler.fans}} - {{cooler.fanSize}} mm
+        <br> Noise: {{cooler.noise}}
+        <br>
 
 
         <!-- <div style="top: 0" class="color yellow"></div> -->
       </div>
 
       <footer class="content">
-        <span class="qt"><a href="/configurator/case">Buy</a></span>
-
+        <button class="buy-btn" (click)="buy(cooler)">Buy</button>
         <h2 class="full-price">
           {{cooler.price}}$
         </h2>
@@ -96,17 +97,17 @@
       <div class="content">
 
         <h1>{{motherboard.title}}</h1>
-          Form factor: {{motherboard.formFactor}}<br>
-          Socket: {{motherboard.socket}} <br>
-          Ram: {{motherboard.maximumRamMemory}} Gb of {{motherboard.typeOfRam}} memory <br>
+        Form factor: {{motherboard.formFactor}}
+        <br> Socket: {{motherboard.socket}}
+        <br> Ram: {{motherboard.maximumRamMemory}} Gb of {{motherboard.typeOfRam}} memory
+        <br>
 
 
         <!-- <div style="top: 0" class="color yellow"></div> -->
       </div>
 
       <footer class="content">
-        <span class="qt"><a href="/configurator/case">Buy</a></span>
-
+        <button class="buy-btn" (click)="buy(motherboard)">Buy</button>
         <h2 class="full-price">
           {{motherboard.price}}$
         </h2>
@@ -123,16 +124,16 @@
       <div class="content">
 
         <h1>{{ram.title}}</h1>
-          Type: {{ram.type}}<br>
-          Capacity: {{ram.capacity}} Gb <br>
-          Frequency: {{ram.frequency}} Mhz<br>
+        Type: {{ram.type}}
+        <br> Capacity: {{ram.capacity}} Gb
+        <br> Frequency: {{ram.frequency}} Mhz
+        <br>
 
         <!-- <div style="top: 0" class="color yellow"></div> -->
       </div>
 
       <footer class="content">
-        <span class="qt"><a href="/configurator/case">Buy</a></span>
-
+        <button class="buy-btn" (click)="buy(ram)">Buy</button>
         <h2 class="full-price">
           {{ram.price}}$
         </h2>
@@ -149,15 +150,16 @@
       <div class="content">
 
         <h1>{{videocard.title}}</h1>
-          Type: {{videocard.type}}<br>
-          Memory: {{videocard.memorySize}} Gb<br>
-          Frequency: {{videocard.gpuBoostClock}} Mhz<br>
+        Type: {{videocard.type}}
+        <br> Memory: {{videocard.memorySize}} Gb
+        <br> Frequency: {{videocard.gpuBoostClock}} Mhz
+        <br>
 
         <!-- <div style="top: 0" class="color yellow"></div> -->
       </div>
 
       <footer class="content">
-        <span class="qt"><a href="/configurator/case">Buy</a></span>
+        <button class="buy-btn" (click)="buy(videocard)">Buy</button>
 
         <h2 class="full-price">
           {{videocard.price}}$
@@ -175,23 +177,23 @@
       <div class="content">
 
         <h1>{{storage.title}}</h1>
-          Capacity: {{storage.capacity}}<br>
-          Interface: {{storage.interface}}<br>
-          Form factor: {{storage.formFactor}} <br>
+        Capacity: {{storage.capacity}}
+        <br> Interface: {{storage.interface}}
+        <br> Form factor: {{storage.formFactor}}
+        <br>
 
         <!-- <div style="top: 0" class="color yellow"></div> -->
       </div>
 
       <footer class="content">
-        <span class="qt"><a href="/configurator/case">Buy</a></span>
-
+        <button class="buy-btn" (click)="buy(storage)">Buy</button>
         <h2 class="full-price">
           {{storage.price}}$
         </h2>
       </footer>
     </article>
 
-    
+
     <article class="product">
       <header *ngIf="powersupply">
         <a class="remove">
@@ -202,39 +204,63 @@
       <div class="content">
 
         <h1>{{powersupply.title}}</h1>
-          Power: {{powersupply.power}}<br>
-          Efficency: {{powersupply.efficiency}}<br>
-          Certificate: {{storage.certificate}} <br>
+        Power: {{powersupply.power}}
+        <br> Efficency: {{powersupply.efficiency}}
+        <br> Certificate: {{storage.certificate}}
+        <br>
 
         <!-- <div style="top: 0" class="color yellow"></div> -->
       </div>
 
       <footer class="content">
-        <span class="qt"><a href="/configurator/case">Buy</a></span>
-
+        <button class="buy-btn" (click)="buy(powersupply)">Buy</button>
         <h2 class="full-price">
           {{powersupply.price}}$
         </h2>
       </footer>
     </article>
-
   </section>
-
 </div>
 
 <footer id="site-footer">
   <div class="container clearfix">
-
-    <div class="left">
-      <!-- <h2 class="subtotal">Subtotal: <span>163.96</span>€</h2>
-      <h3 class="tax">Taxes (5%): <span>8.2</span>€</h3>
-      <h3 class="shipping">Shipping: <span>5.00</span>€</h3> -->
-    </div>
-
+    <div class="left"></div>
     <div class="right">
-      <h1 class="total">Total: <span>{{totalPrice | number : '1.2-2'}}</span>$</h1>
-      <a class="btn" style="color:white" (click)="share()">Share</a>
+      <h1 class="total">Total:
+        <span>{{totalPrice | number : '1.2-2'}}</span>$</h1>
+      <a class="btn" style="color:white" data-toggle="modal" data-target="#resultModal">Share</a>
     </div>
 
   </div>
 </footer>
+
+<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resultModal">Share your configuration:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-12 content">
+          <form id="resultForm">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" id="title" name="title" ngModel class="form-control" [(ngModel)]="titlePost">
+            </div>
+            <div class="form-group">
+              <label for="desc">Description</label>
+              <textarea rows="4" cols="60" name="desc" form="resultForm" id="desc" placeholder="enter description here..." [(ngModel)]="descriptionPost"></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn" style="color:white" data-dismiss="modal" (click)="share()">Share it!</button>
+      </div>
+    </div>
+  </div>
+</div>

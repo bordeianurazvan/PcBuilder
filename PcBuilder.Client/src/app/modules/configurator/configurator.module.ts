@@ -23,10 +23,12 @@ import { PowersupplyCardComponent } from './shared/components/powersupply-card/p
 import { HttpClientModule } from '@angular/common/http';
 import { ResultComponent } from './components/result/result.component';
 import { CommunityService } from '../core/shared/services/community.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     ConfiguratorRoutes,
     HttpClientModule
   ],

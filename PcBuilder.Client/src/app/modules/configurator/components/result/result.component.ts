@@ -28,6 +28,8 @@ export class ResultComponent implements OnInit {
   powersupply: PowerSupply = new PowerSupply();
   totalPrice: number;
   post: Post;
+  titlePost: string;
+  descriptionPost: string;
 
   constructor(
     private router: Router,
@@ -45,21 +47,28 @@ export class ResultComponent implements OnInit {
     this. post = new Post();
   }
   share() {
+    this.post.title = this.titlePost;
+    this.post.description = this.descriptionPost;
+
     this.communityService.posts.insert(this.post).subscribe(response => {
       this.post = response;
+      this.router.navigate(['community']);
     },
   error => {
     console.log('error');
   });
-    console.log(this.post);
-    this.router.navigate(['community']);
+  }
+
+  buy(product: any) {
+    console.log(product);
+    window.open(product.url);
   }
 
   ngOnInit() {
     if (this.configService.computer.caseId != null) {
       this.configService.cases.getById(this.configService.computer.caseId).subscribe(response => {
         this.case = response;
-        this.post.CaseId = response.id;
+        this.post.caseId = response.id;
         this.post.image = response.imageUrl;
         console.log(this.case);
       });
@@ -68,7 +77,7 @@ export class ResultComponent implements OnInit {
     if (this.configService.computer.cpuId != null) {
       this.configService.cpus.getById(this.configService.computer.cpuId).subscribe(response => {
         this.cpu = response;
-        this.post.CpuId = response.id;
+        this.post.cpuId = response.id;
         console.log(response);
       });
     }
@@ -78,7 +87,7 @@ export class ResultComponent implements OnInit {
         .getById(this.configService.computer.coolerId)
         .subscribe(response => {
           this.cooler = response;
-          this.post.CoolerId = response.id;
+          this.post.coolerId = response.id;
           console.log(response);
         });
     }
@@ -88,7 +97,7 @@ export class ResultComponent implements OnInit {
         .getById(this.configService.computer.motherboardId)
         .subscribe(response => {
           this.motherboard = response;
-          this.post.MotherboardId = response.id;
+          this.post.motherboardId = response.id;
           console.log(response);
         });
     }
@@ -96,7 +105,7 @@ export class ResultComponent implements OnInit {
     if (this.configService.computer.ramId != null) {
       this.configService.rams.getById(this.configService.computer.ramId).subscribe(response => {
         this.ram = response;
-        this.post.RamId = response.id;
+        this.post.ramId = response.id;
         console.log(response);
       });
     }
@@ -106,7 +115,7 @@ export class ResultComponent implements OnInit {
         .getById(this.configService.computer.storageId)
         .subscribe(response => {
           this.storage = response;
-          this.post.StorageId = response.id;
+          this.post.storageId = response.id;
           console.log(response);
         });
     }
@@ -116,7 +125,7 @@ export class ResultComponent implements OnInit {
         .getById(this.configService.computer.videocardId)
         .subscribe(response => {
           this.videocard = response;
-          this.post.VideoCardId = response.id;
+          this.post.videoCardId = response.id;
           console.log(response);
         });
     }
@@ -126,14 +135,12 @@ export class ResultComponent implements OnInit {
         .getById(this.configService.computer.powersupplyId)
         .subscribe(response => {
           this.powersupply = response;
-          this.post.PowerSupplyId = response.id;
+          this.post.powerSupplyId = response.id;
           console.log(response);
         });
     }
     this.totalPrice = this.configService.price;
 
     this.post.price = this.totalPrice;
-    this.post.description = 'description';
-    this.post.title = 'title';
   }
 }
