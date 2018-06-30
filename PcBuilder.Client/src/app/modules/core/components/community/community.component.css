@@ -18,8 +18,8 @@ main {
   margin: 10px 10px 0 0;
 }
 .post:nth-child(3n) {
-    margin: 10px 10px 0 0;
-  }
+  margin: 10px 10px 0 0;
+}
 
 .post {
   background: white;
@@ -45,7 +45,7 @@ main {
   height: 50px;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
   z-index: 2;
-  content: "";
+  content: '';
 }
 .post .post-image .post-price {
   background: crimson;
@@ -83,7 +83,7 @@ main {
 .post .post-card .post-content {
   color: #797979;
   line-height: 1.8em;
-  height: 9em;
+  height: 6em;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -95,7 +95,7 @@ main {
 .post .post-card .post-read {
   text-decoration: none;
   text-transform: uppercase;
-  color:crimson;
+  color: crimson;
   font-weight: 700;
   font-size: 0.9em;
   letter-spacing: -0.1em;
@@ -142,7 +142,7 @@ main {
 .post .post-card .post-share .post-share-options a:hover {
   color: #f89406;
 }
-.post .post-card .post-share input[type="checkbox"] {
+.post .post-card .post-share input[type='checkbox'] {
   display: none;
 }
 .post .post-card .post-share input:checked + label .post-share-options {
@@ -160,19 +160,39 @@ a {
 #title {
   color: black;
 }
-.nav-toggle span, .nav-toggle span:before, .nav-toggle span:after{
-    background-color: black;
+.nav-toggle span,
+.nav-toggle span:before,
+.nav-toggle span:after {
+  background-color: black;
 }
 
-.nav-toggle.active span{
-    background-color: transparent;
+.nav-toggle.active span {
+  background-color: transparent;
 }
-.nav-toggle.active span:before, .nav-toggle.active span:after{
-    background-color: white;
+.nav-toggle.active span:before,
+.nav-toggle.active span:after {
+  background-color: white;
 }
-.overlay-boxify.open{
-    z-index: 100;
+.overlay-boxify.open {
+  z-index: 100;
 }
-.texture-overlay{
-    z-index: -1;
+.texture-overlay {
+  z-index: -1;
+}
+
+@media only screen and (max-width: 415px) {
+  .overlay nav {
+    top: 45%;
+    height: 95%;
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .post {
+    width: 100%;
+  }
+  .post-price{
+    margin: 10px;
+  }
 }

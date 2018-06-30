@@ -127,6 +127,7 @@ h2{
 .background{
   background-color: black;
   height: 100vh;
+  overflow: hidden;
 }
 .nav-toggle{
   z-index: 9;
@@ -148,4 +149,12 @@ h2{
     height: 17px;
   }
 }
+
+@media only screen and (max-width: 415px) {
+  .overlay nav{
+      top:45%;
+      height: 95%;
+      margin-left: 20px;
+  }
+} 
 

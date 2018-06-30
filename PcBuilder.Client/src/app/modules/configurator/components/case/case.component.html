@@ -14,9 +14,9 @@
         <div class="col-sm-3">
             <p><span class="total_price">Total: ${{currentTotalPrice | number : '1.2-2'}}</span></p>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 footer-buttons">
             <button class="btn btn-danger" routerLink="">Quit</button>
-            <button class="btn btn-success" [disabled]="isDisabled" (click)="goToCPU()">Next ></button>
+            <button class="btn btn-success" [disabled]="isDisabled" (click)="goToCPU()" [ngStyle]="{'cursor': isDisabled ? 'no-drop' : 'pointer' }">Next ></button>
         </div>
       </div>
     </div>

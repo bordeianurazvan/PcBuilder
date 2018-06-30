@@ -49,7 +49,7 @@
 
 .info {
   background: rgba(27, 26, 26, 0.9);
-  font-family: 'Farsan', cursive;
+  font-family: Arial,sans-serif;
   transition: all 0.3s ease-out;
   transform: translateX(-101%);
   position: absolute;

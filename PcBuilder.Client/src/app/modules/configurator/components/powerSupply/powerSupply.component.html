@@ -11,13 +11,13 @@
   </div>
   <div class="footer">
       <div class="col-sm-12 footer_content">
-        <div class="col-sm-3">
+        <div class="col-sm-3 footer-price">
             <p><span class="total_price">Total: ${{currentTotalPrice | number : '1.2-2'}}</span></p>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 footer-buttons">
             <button class="btn btn-warning" (click)="goToStorage()"> < Prev</button>
             <button class="btn btn-danger" routerLink="">Quit</button>
-            <button class="btn btn-success" [disabled]="isDisabled" (click)="goToResult()">Finish</button>
+            <button class="btn btn-success" [disabled]="isDisabled" (click)="goToResult()" [ngStyle]="{'cursor': isDisabled ? 'no-drop' : 'pointer' }">Finish</button>
         </div>
       </div>
     </div>

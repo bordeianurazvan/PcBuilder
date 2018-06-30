@@ -66,7 +66,7 @@ a:hover {
 .container {
 	font-family: 'Open Sans', sans-serif;
 	margin: 0 auto;
-	width: 980px;
+	max-width: 980px;
 }
 
 #cart {
@@ -292,6 +292,7 @@ a:hover {
 
 .right {
 	float: right;
+	display: flex;
 }
 
 .btn {
@@ -365,4 +366,31 @@ a:hover {
 	background: #007bff;
 	color: white;
 	border: 1px solid transparent;
+}
+
+
+@media only screen and (max-width: 550px) {
+	header{
+		display: none;
+	}
+	#site-header{
+		display:initial;
+	}
+	.product .content {
+		font-size: 12px;
+		margin-left: 20px;
+	}
+	.product h1{
+		font-size: 13px;
+	}
+	.product footer .full-price{
+		font-size: 15px;
+		padding: 0px 15px;
+	}
+	.btn{
+		width: 210px;
+	}
+	.right{
+		display: inline-block;
+	}
 }

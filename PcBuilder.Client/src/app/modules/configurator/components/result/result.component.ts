@@ -64,6 +64,10 @@ export class ResultComponent implements OnInit {
     window.open(product.url);
   }
 
+  home() {
+    this.router.navigate(['']);
+  }
+
   ngOnInit() {
     if (this.configService.computer.caseId != null) {
       this.configService.cases.getById(this.configService.computer.caseId).subscribe(response => {
