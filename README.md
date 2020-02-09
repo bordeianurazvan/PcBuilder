@@ -1,12 +1,17 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+This is a web application which can be used to configure computers.
+
+### Backend ###
+.NET Core 2.x
+Sql Server
+
+### Frontend ###
+Angular 5
+Bootstrap
+Font Awesome
 
 ### How do I get set up? ###
 
