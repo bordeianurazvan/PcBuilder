@@ -5,13 +5,10 @@
 This is a web application which can be used to configure computers.
 
 ### Backend ###
-.NET Core 2.x
-Sql Server
+.NET Core 2.x, Sql Server
 
 ### Frontend ###
-Angular 5
-Bootstrap
-Font Awesome
+Angular 5, Bootstrap, Font Awesome
 
 ### How do I get set up? ###
 
